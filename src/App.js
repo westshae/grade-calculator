@@ -4,7 +4,8 @@ import Initiate from "./components/initiate"
 function App() {
   return (
     <div>
-      <p>Test</p>
+      <header>Grade calculator</header>
+      <p>This website has been created to simplify the calculation of your grades, and predict what types of grades you need, and where you should focus your effort.</p>
       <Initiate/>
     </div>
   );

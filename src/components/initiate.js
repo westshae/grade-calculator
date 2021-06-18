@@ -39,11 +39,18 @@ class initiate extends Component{
 
     render(){
         return(
-            <Container>
-                <InputLabel>Number of courses</InputLabel>
-                <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses}/>
-                {Array(this.state.numCourses).fill(<p>Test</p>)}
-            </Container>
+            <div>
+                <Container>
+                    <InputLabel>Number of courses</InputLabel>
+                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses}/>
+                </Container>
+                {Array(this.state.numCourses).fill(
+                <div>
+                    <p>Test</p>
+                </div>
+                )}
+            </div>
+
         )
     }
 }
