@@ -7,6 +7,16 @@ import Course from "../components/courseContainer"
 const Container = styled.div`
     display:flexbox;
     flex-direction:column;
+    //To change to grid, easier to prototype in flex
+`
+
+
+const InputLabel = styled.label`
+    display:flexbox;
+`
+
+const Input = styled.input`
+    display:flexbox;
 `
 
 class initiate extends Component{
@@ -35,12 +45,18 @@ class initiate extends Component{
 
     render(){
         return(
-            <Container>
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
-            </Container>
+            <div>
+                <Container>
+                    <InputLabel>Number of classes to calculate</InputLabel>
+                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses} defaultValue={1}/>
+                </Container>
+
+                <Container>
+                    {Array(this.state.numCourses).fill(
+                        <Course/>
+                        )}
+                </Container>
+            </div>
 
         )
     }
