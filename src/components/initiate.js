@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {Component} from "react"
 
 //Component imports
-import Course from "../components/courseContainer"
+import Course from "./course"
 
 const Container = styled.div`
     display:flexbox;
@@ -12,7 +12,7 @@ const Container = styled.div`
 `
 
 
-const InputLabel = styled.label`
+const Label = styled.label`
     display:flexbox;
 `
 
@@ -44,17 +44,23 @@ class initiate extends Component{
         })
     }
 
+    //IDEA
+    //try out a system where you add each element (component) to a list, then go through that list and search for certain element (p tag eg) that has id
+    //Add all of those values together.
+
     render(){
         return(
             <div>
                 <Container>
-                    <InputLabel>Number of classes to calculate</InputLabel>
+                    <Label>Number of classes to calculate</Label>
                     <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses} defaultValue={1}/>
                 </Container>
 
+                <br/><br/>
+
                 <Container>
                     {Array(this.state.numCourses).fill(
-                        <Course/>
+                        <Course id={"test"}/>
                         )}
                 </Container>
             </div>

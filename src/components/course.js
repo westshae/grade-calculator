@@ -24,7 +24,7 @@ class Course extends Component {
         }
     }
 
-    handleNumCoursesChange(e) {
+    handleInputs(e) {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
@@ -36,7 +36,7 @@ class Course extends Component {
         if(valueInt <= 0){valueInt = 1;}
 
         this.setState({
-          numCourses: valueInt
+          numPapers: valueInt
         })
     }
 
@@ -44,13 +44,16 @@ class Course extends Component {
         return(
             <div>
                 <Container>
-                    <Label>Number of assignments/tests (Anything you're marked for)</Label>
-                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses} defaultValue={1}/>
+                    <Label>Number of assignments/tests (Anything you're marked for) {this.props.id}</Label>
+                    <Input type="number" onChange={this.handleInputs.bind(this)} value={this.state.numPapers} defaultValue={1}/>
                 </Container>
 
-                {Array(this.state.numCourses).fill(
-                    <Paper/>
+                <br/>
+
+                {Array(this.state.numPapers).fill(
+                    <Paper id = "test"/>
                 )}
+                <p>Total </p>
             </div>
         )
     }
