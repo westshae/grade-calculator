@@ -13,6 +13,12 @@ const Input = styled.input`
     display:flexbox;
 `
 
+const PaperContainer = styled.div`
+    display:flexbox;
+    flex-direction:row;
+    
+`
+
 class initiate extends Component{
     constructor(props){
         super(props);
@@ -29,7 +35,7 @@ class initiate extends Component{
 
         //Checks if the values fit the correct range, if not changes value
         let valueInt = parseInt(value);
-        if(valueInt > 10){valueInt = 10;}    
+        if(valueInt > 10){valueInt = 10;}
         if(valueInt <= 0){valueInt = 1;}
 
         this.setState({
@@ -41,13 +47,18 @@ class initiate extends Component{
         return(
             <div>
                 <Container>
-                    <InputLabel>Number of courses</InputLabel>
+                    <InputLabel>Number of papers (classes)</InputLabel>
                     <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses}/>
                 </Container>
                 {Array(this.state.numCourses).fill(
-                <div>
-                    <p>Test</p>
-                </div>
+                <PaperContainer>
+                    <p>Individual paper</p>
+                    <InputLabel>Paper percent</InputLabel>
+                    <Input/>
+                    <InputLabel>Paper grade received</InputLabel>
+                    <Input/>
+                    <br/>
+                </PaperContainer>
                 )}
             </div>
 
