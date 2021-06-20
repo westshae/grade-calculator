@@ -1,22 +1,12 @@
 import styled from "styled-components";
 import {Component} from "react"
 
+//Component imports
+import Course from "../components/courseContainer"
+
 const Container = styled.div`
     display:flexbox;
-`
-
-const InputLabel = styled.label`
-    display:flexbox;
-`
-
-const Input = styled.input`
-    display:flexbox;
-`
-
-const PaperContainer = styled.div`
-    display:flexbox;
-    flex-direction:row;
-    
+    flex-direction:column;
 `
 
 class initiate extends Component{
@@ -45,22 +35,12 @@ class initiate extends Component{
 
     render(){
         return(
-            <div>
-                <Container>
-                    <InputLabel>Number of papers (classes)</InputLabel>
-                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses}/>
-                </Container>
-                {Array(this.state.numCourses).fill(
-                <PaperContainer>
-                    <p>Individual paper</p>
-                    <InputLabel>Paper percent</InputLabel>
-                    <Input/>
-                    <InputLabel>Paper grade received</InputLabel>
-                    <Input/>
-                    <br/>
-                </PaperContainer>
-                )}
-            </div>
+            <Container>
+                <Course/>
+                <Course/>
+                <Course/>
+                <Course/>
+            </Container>
 
         )
     }
