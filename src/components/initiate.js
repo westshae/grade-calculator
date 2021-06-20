@@ -7,6 +7,7 @@ import Course from "../components/courseContainer"
 const Container = styled.div`
     display:flexbox;
     flex-direction:column;
+    
     //To change to grid, easier to prototype in flex
 `
 

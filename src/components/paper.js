@@ -1,22 +1,20 @@
-import styled from "styled-components"
-import { Component } from "react"
+import styled from "styled-components";
+import { Component } from "react";
 
-//Component import
-import Paper from "./paper"
 
-const Container = styled.div`
-    display:flexbox;
-`
-
-const Label = styled.label`
+const InputLabel = styled.label`
     display:flexbox;
 `
 
 const Input = styled.input`
     display:flexbox;
 `
+const Container = styled.div`
+    display:flexbox;
+    flex-direction:row;
+`
 
-class Course extends Component {
+class Paper extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -42,18 +40,16 @@ class Course extends Component {
 
     render(){
         return(
-            <div>
-                <Container>
-                    <Label>Number of assignments/tests (Anything you're marked for)</Label>
-                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses} defaultValue={1}/>
-                </Container>
-
-                {Array(this.state.numCourses).fill(
-                    <Paper/>
-                )}
-            </div>
+            <Container>
+                <p>Individual work</p>
+                <InputLabel>Work grade percentage</InputLabel>
+                <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses + "%"} defaultValue={1}/>
+                <InputLabel>Work mark</InputLabel>
+                <Input/>
+                <br/>
+            </Container>
         )
     }
 }
 
-export default Course;
+export default Paper;
