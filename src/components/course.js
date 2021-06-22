@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { Component } from "react"
+import React, {useState} from "react"
 
 //Component import
 import Paper from "./paper"
@@ -16,22 +16,10 @@ const Input = styled.input`
     display:flexbox;
 `
 
-class Course extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            numPapers: 1,
-        }
-    }
+const Course = () =>{
+    const [numPapers, setNumPapers] = useState(1);
 
-    handleCallback = (childData) =>{
-        this.setState({
-            test: {childData}
-        })
-    }
-
-
-    handleInputs = e => {
+    const handleInputs = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
@@ -43,30 +31,22 @@ class Course extends Component {
         if(valueInt <= 0){valueInt = 1;}
 
 
-        this.setState({
-          numPapers: valueInt,
-        })
+        setNumPapers(valueInt);
     }
 
-    render(){
-        return(
-            <div>
-                <div>
-                    <Container>
-                        <Label>Number of assignments/tests (Anything you're marked for) {this.props.id}</Label>
-                        <Input type="number" onChange={this.handleInputs.bind(this)} value={this.state.numPapers} defaultValue={1}/>
-                    </Container>
+    return(
+        <div>
+            <Container>
+                <Label>Number of assignments/tests (Anything you're marked for) {this.props.id}</Label>
+                <Input type="number" onChange={this.handleInputs.bind(this)} defaultValue={1} value={this.state.numPapers}/>
+            </Container>
 
-                    <br/>
+            <br/>
 
-                    {Array(this.state.numPapers).fill(
-                        <Paper id={"paper"}/>
-                    )}
-                    <p>Total: </p>
-                </div>
-            </div>
-        )
-    }
+
+             <p>Total: {this.state.test}</p>
+        </div>
+    )
 }
 
 export default Course;

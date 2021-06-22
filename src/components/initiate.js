@@ -53,7 +53,7 @@ class initiate extends Component{
             <div>
                 <Container>
                     <Label>Number of classes to calculate</Label>
-                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} value={this.state.numCourses} defaultValue={1}/>
+                    <Input type="number" onChange={this.handleNumCoursesChange.bind(this)} defaultValue={1}/>
                 </Container>
 
                 <br/><br/>

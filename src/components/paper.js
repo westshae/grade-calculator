@@ -25,7 +25,6 @@ class Paper extends Component{
         }
     }
 
-
     handleGradePercent = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
@@ -61,19 +60,17 @@ class Paper extends Component{
 
     render(){
         return(
-            <div>
-                <Container className="papers" id={this.props.id} ref={this.paperRef}>
+                <Container onChange={this.onTrigger}>
                     <p>Individual work</p>
                     <Label>Work grade</Label>
-                    <Input type="number" onChange={this.handleGradePercent.bind(this)} value={this.state.gradePercent} defaultValue={0}/>
+                    <Input type="number" onChange={this.handleGradePercent.bind(this)} defaultValue={0} value={this.state.gradePercent}/>
 
                     <Label>Percent of grade</Label>
-                    <Input type="number" onChange={this.handlePercentOfGrade.bind(this)} value={this.state.percentOfGrade} defaultValue={0}/>
+                    <Input type="number" onChange={this.handlePercentOfGrade.bind(this)} defaultValue={0} value={this.state.percentOfGrade}/>
 
                     <p>Total: {this.state.gradePercent * this.state.percentOfGrade}</p>
                     <br/>
                 </Container>
-            </div>
         )
     }
 }
