@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 
 const Label = styled.label`
@@ -14,18 +14,11 @@ const Container = styled.div`
     flex-direction:row;
 `
 
-class Paper extends Component{
-    constructor(props){
-        super(props);
+const Paper = () =>{
+    const [gradePercent, setGradePercent] = useState(1);
+    const [percentOfGrade, setPercentOfGrade] = useState(1);
 
-        this.state = {
-            gradePercent: 1,
-            percentOfGrade: 1
-            
-        }
-    }
-
-    handleGradePercent = e => {
+    const handleGradePercent = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
@@ -36,12 +29,10 @@ class Paper extends Component{
         if(valueInt > 15){valueInt = 15;}
         if(valueInt <= 0){valueInt = 1;}
 
-        this.setState({
-          gradePercent: valueInt,
-        })
+        setGradePercent(valueInt)
     }
 
-    handlePercentOfGrade = e => {
+    const handlePercentOfGrade = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
@@ -53,26 +44,22 @@ class Paper extends Component{
         if(valueInt <= 0){valueInt = 1;}
 
 
-        this.setState({
-          percentOfGrade: valueInt,
-        })
+        setPercentOfGrade(valueInt)
     }
 
-    render(){
         return(
                 <Container onChange={this.onTrigger}>
                     <p>Individual work</p>
                     <Label>Work grade</Label>
-                    <Input type="number" onChange={this.handleGradePercent.bind(this)} defaultValue={0} value={this.state.gradePercent}/>
+                    <Input type="number" onChange={handleGradePercent} defaultValue={0} value={gradePercent}/>
 
                     <Label>Percent of grade</Label>
-                    <Input type="number" onChange={this.handlePercentOfGrade.bind(this)} defaultValue={0} value={this.state.percentOfGrade}/>
+                    <Input type="number" onChange={handlePercentOfGrade} defaultValue={0} value={gradePercent}/>
 
-                    <p>Total: {this.state.gradePercent * this.state.percentOfGrade}</p>
+                    <p>Total: {percentOfGrade * percentOfGrade}</p>
                     <br/>
                 </Container>
         )
-    }
 }
 
 export default Paper;

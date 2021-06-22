@@ -18,6 +18,7 @@ const Input = styled.input`
 
 const Course = () =>{
     const [numPapers, setNumPapers] = useState(1);
+    const [total, setTotal] = useState(1);
 
     const handleInputs = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
@@ -37,14 +38,14 @@ const Course = () =>{
     return(
         <div>
             <Container>
-                <Label>Number of assignments/tests (Anything you're marked for) {this.props.id}</Label>
-                <Input type="number" onChange={this.handleInputs.bind(this)} defaultValue={1} value={this.state.numPapers}/>
+                <Label>Number of assignments/tests (Anything you're marked for)</Label>
+                <Input type="number" onChange={handleInputs} defaultValue={1} value={numPapers}/>
             </Container>
 
             <br/>
 
 
-             <p>Total: {this.state.test}</p>
+             <p>Paper Total: {total}</p>
         </div>
     )
 }
