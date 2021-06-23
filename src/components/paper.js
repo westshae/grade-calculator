@@ -47,19 +47,20 @@ const Paper = () =>{
         setPercentOfGrade(valueInt)
     }
 
+
         return(
-                <Container onChange={this.onTrigger}>
-                    <p>Individual work</p>
-                    <Label>Work grade</Label>
-                    <Input type="number" onChange={handleGradePercent} defaultValue={0} value={gradePercent}/>
+             <Container>
+                <p>Individual work</p>
+                <Label>Work grade</Label>
+                <p></p>
+                <Input type="number" onChange={handleGradePercent} defaultValue={0} value={gradePercent}/>
 
-                    <Label>Percent of grade</Label>
+                <Label>Percent of grade</Label>
                     <Input type="number" onChange={handlePercentOfGrade} defaultValue={0} value={gradePercent}/>
-
-                    <p>Total: {percentOfGrade * percentOfGrade}</p>
-                    <br/>
-                </Container>
-        )
+                <p>Total: {percentOfGrade * percentOfGrade}</p>
+                <br/>
+            </Container>
+    )
 }
 
 export default Paper;

@@ -44,8 +44,11 @@ const Course = () =>{
 
             <br/>
 
+            {Array(numPapers).fill(
+                <Paper id={"test"}/>
+            )}
 
-             <p>Paper Total: {total}</p>
+            <p>Paper Total: {total}</p>
         </div>
     )
 }
