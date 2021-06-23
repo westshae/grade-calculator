@@ -79,7 +79,7 @@ const Paper = () =>{
 
                 <Label>Percent of grade</Label>
                 <Input type="number" onChange={handlePercentOfGrade} defaultValue={1} value={percentOfGrade}/>
-                <p>Total: {total}%</p>
+                <p>Total: {Math.round(total)}%</p>
                 <br/>
             </Container>
     )
