@@ -37,27 +37,22 @@ const Initiate = () =>{
         setNumCourses(valueInt)
     }
 
-    //IDEA
-    //try out a system where you add each element (component) to a list, then go through that list and search for certain element (p tag eg) that has id
-    //Add all of those values together.
+    return(
+        <div>
+            <Container>
+                <Label>Number of classes to calculate</Label>
+                <Input type="number" onChange={handleNumCoursesChange} defaultValue={1} value={numCourses}/>
+            </Container>
 
-        return(
-            <div>
-                <Container>
-                    <Label>Number of classes to calculate</Label>
-                    <Input type="number" onChange={handleNumCoursesChange} defaultValue={1} value={numCourses}/>
-                </Container>
+            <br/><br/>
 
-                <br/><br/>
-
-                <Container>
-                    {Array(numCourses).fill().map((item, index)=>{
-                    return <Course key={index}/>
-                    })}
-                </Container>
-            </div>
-
-        )
+            <Container>
+                {Array(numCourses).fill().map((item, index)=>{
+                return <Course key={index}/>
+                })}
+            </Container>
+        </div>
+    )
     
 }
 
