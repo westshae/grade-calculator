@@ -44,9 +44,9 @@ const Course = () =>{
 
             <br/>
 
-            {Array(numPapers).fill(
-                <Paper id={"test"}/>
-            )}
+            {Array(numPapers).fill().map((item, index)=>{
+                return <Paper key={index}/>
+            })}
 
             <p>Paper Total: {total}</p>
         </div>
