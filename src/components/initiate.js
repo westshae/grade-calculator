@@ -51,9 +51,9 @@ const Initiate = () =>{
                 <br/><br/>
 
                 <Container>
-                    {Array(numCourses).fill(
-                        <Course id={"test"}/>
-                        )}
+                    {Array(numCourses).fill().map((item, index)=>{
+                    return <Course key={index}/>
+                    })}
                 </Container>
             </div>
 
