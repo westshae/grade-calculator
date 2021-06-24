@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //Component imports
 import Course from "./course"
-import React, {useState} from "react"
+import React, {useState, useRef, useEffect} from "react"
 
 const Container = styled.div`
     display:flexbox;
@@ -21,7 +21,16 @@ const Input = styled.input`
 `
 
 const Initiate = () =>{
-    const [numCourses, setNumCourses] = useState(1);
+    const [numCourses, setNumCourses] = useState(0);
+    const [totalResults, setTotalResults] = useState(0);
+
+    const prevCoursesRef = useRef()
+
+    useEffect(()=>{
+        prevCoursesRef.current = numCourses;
+    })
+
+    const prevCourses = prevCoursesRef.current
 
     const handleNumCoursesChange = e =>{
         //Checks if the value isn't a string, if it isn't changes value to 1
@@ -37,20 +46,29 @@ const Initiate = () =>{
         setNumCourses(valueInt)
     }
 
+    const getValue = (courseTotal, previousCourseTotal) =>{
+        if(numCourses === prevCourses){
+            setTotalResults((totalResults-previousCourseTotal) + courseTotal);
+        }else{
+            setTotalResults((totalResults) + courseTotal);
+        }
+    }
+
     return(
         <div>
             <Container>
                 <Label>Number of classes to calculate</Label>
-                <Input type="number" onChange={handleNumCoursesChange} defaultValue={1} value={numCourses}/>
+                <Input type="number" onChange={handleNumCoursesChange} defaultValue={0} value={numCourses}/>
             </Container>
 
             <br/><br/>
 
             <Container>
                 {Array(numCourses).fill().map((item, index)=>{
-                return <Course key={index}/>
+                return <Course getData={getValue} key={index}/>
                 })}
             </Container>
+            <p>Total result: {totalResults}</p>
         </div>
     )
     

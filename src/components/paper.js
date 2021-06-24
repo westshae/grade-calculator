@@ -22,8 +22,8 @@ const Paper = (props) =>{
     const [paperTotal, setPaperTotal] = useState(0);
     useEffect(()=>{setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1))}, [gradePercent, percentOfGrade])
 
-    const [previousTotal, setPreviousTotal] = useState(0);
-    useEffect(()=>{setPreviousTotal(paperTotal)}, [paperTotal])
+    const [previousPaperTotal, setPreviousPaperTotal] = useState(0);
+    useEffect(()=>{setPreviousPaperTotal(paperTotal)}, [paperTotal])
 
     const handleGradePercent = e => {
         //Checks that the value passed in is a number, and checked that it isn't empty.
@@ -43,6 +43,8 @@ const Paper = (props) =>{
                 break;
             case (valueInt < 0):
                 break;
+            default:
+                //Continue
         }
 
         setGradePercent(valueInt)
@@ -66,18 +68,20 @@ const Paper = (props) =>{
                 break;
             case (valueInt < 0):
                 break;
+            default:
+                //Continue
         }
 
         setPercentOfGrade(valueInt)
     }
 
     useEffect(()=>{
-        setPreviousTotal(paperTotal);
+        setPreviousPaperTotal(paperTotal);
         setPaperTotal((percentOfGrade*.1)*(gradePercent*0.1));
     }, [percentOfGrade, gradePercent])
 
     useEffect(()=>{
-        props.getData(paperTotal, previousTotal, props.index);
+        props.getData(paperTotal, previousPaperTotal);
     }, [paperTotal])
 
         return(
