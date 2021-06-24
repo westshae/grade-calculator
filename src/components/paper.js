@@ -15,7 +15,7 @@ const Container = styled.div`
     flex-direction:row;
 `
 
-const Paper = () =>{
+const Paper = (props) =>{
     const [gradePercent, setGradePercent] = useState(1);
     const [percentOfGrade, setPercentOfGrade] = useState(1);
     const [total, setTotal] = useState(1);
@@ -79,6 +79,7 @@ const Paper = () =>{
 
                 <Label>Percent of grade</Label>
                 <Input type="number" onChange={handlePercentOfGrade} defaultValue={1} value={percentOfGrade}/>
+                <button onClick={()=>props.getData((Math.round(total)))}>Button for alert</button>
                 <p>Total: {Math.round(total)}%</p>
                 <br/>
             </Container>

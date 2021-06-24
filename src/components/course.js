@@ -35,6 +35,10 @@ const Course = () =>{
         setNumPapers(valueInt);
     }
 
+    const getValue = (test) =>{
+        alert(test)
+    }
+
     return(
         <div>
             <Container>
@@ -45,7 +49,7 @@ const Course = () =>{
             <br/>
 
             {Array(numPapers).fill().map((item, index)=>{
-                return <Paper key={index}/>
+                return <Paper getData={getValue} key={index}/>
             })}
 
             <p>Paper Total: {total}</p>
