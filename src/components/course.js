@@ -20,6 +20,7 @@ const Course = (props) =>{
     const [numPapers, setNumPapers] = useState(0);
     const [classTotal, setClassTotal] = useState(0);
     const [previousCourseTotal, setPreviousCourseTotal] = useState(0);
+    const [paperList, setPaperList] = useState(null)
     useEffect(()=>{setPreviousCourseTotal(classTotal)}, [classTotal])
 
     const prevPapersRef = useRef()
@@ -44,14 +45,23 @@ const Course = (props) =>{
         setNumPapers(valueInt);
     }
 
+    // const getValue = (paperTotal, previousTotal) =>{
+    //     if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
+    //     if(numPapers === prevPapers){
+    //         setClassTotal((classTotal-previousTotal) + paperTotal);
+    //     }else{
+    //         setClassTotal((classTotal) + paperTotal);
+    //     }
+    // }
     const getValue = (paperTotal, previousTotal) =>{
-        if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
-        if(numPapers === prevPapers){
-            setClassTotal((classTotal-previousTotal) + paperTotal);
-        }else{
-            setClassTotal((classTotal) + paperTotal);
+            if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
+
+            if(numPapers === prevPapers){
+                setClassTotal((classTotal-previousTotal) + paperTotal);
+            }else{
+                setClassTotal((classTotal) + paperTotal);
+            }
         }
-    }
 
     useEffect(()=>{
         props.getData(classTotal, previousCourseTotal);

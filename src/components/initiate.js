@@ -7,6 +7,7 @@ import React, {useState, useRef, useEffect} from "react"
 const Container = styled.div`
     display:flexbox;
     flex-direction:column;
+    background-color:cyan;
     
     //To change to grid, easier to prototype in flex
 `
@@ -33,6 +34,7 @@ const Initiate = () =>{
     const prevCourses = prevCoursesRef.current
 
     const handleNumCoursesChange = e =>{
+        console.log("handle course")
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
@@ -47,6 +49,7 @@ const Initiate = () =>{
     }
 
     const getValue = (courseTotal, previousCourseTotal) =>{
+        console.log("handle get value")
         if(numCourses === prevCourses){
             setTotalResults((totalResults-previousCourseTotal) + courseTotal);
         }else{
@@ -58,14 +61,16 @@ const Initiate = () =>{
         <div>
             <Container>
                 <Label>Number of classes to calculate</Label>
-                <Input type="number" onChange={handleNumCoursesChange} defaultValue={0} value={numCourses}/>
+                <Input type="number" defaultValue={0}/>
+                <button onClick={handleNumCoursesChange}>Submit</button>
             </Container>
 
             <br/><br/>
 
             <Container>
                 {Array(numCourses).fill().map((item, index)=>{
-                return <Course getData={getValue} key={index}/>
+                    console.log("array loop")
+                    return <Course getData={getValue} key={index}/>
                 })}
             </Container>
             <p>Total result: {totalResults}</p>
