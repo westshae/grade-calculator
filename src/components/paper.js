@@ -16,9 +16,14 @@ const Container = styled.div`
 `
 
 const Paper = (props) =>{
-    const [gradePercent, setGradePercent] = useState(1);
-    const [percentOfGrade, setPercentOfGrade] = useState(1);
-    const [total, setTotal] = useState(1);
+    const [gradePercent, setGradePercent] = useState(0);
+    const [percentOfGrade, setPercentOfGrade] = useState(0);
+
+    const [paperTotal, setPaperTotal] = useState(0);
+    useEffect(()=>{setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1))}, [gradePercent, percentOfGrade])
+
+    const [previousTotal, setPreviousTotal] = useState(0);
+    useEffect(()=>{setPreviousTotal(paperTotal)}, [paperTotal])
 
     const handleGradePercent = e => {
         //Checks that the value passed in is a number, and checked that it isn't empty.
@@ -67,20 +72,24 @@ const Paper = (props) =>{
     }
 
     useEffect(()=>{
-        setTotal((percentOfGrade*.1)*(gradePercent*0.1))
+        setPreviousTotal(paperTotal);
+        setPaperTotal((percentOfGrade*.1)*(gradePercent*0.1));
     }, [percentOfGrade, gradePercent])
+
+    useEffect(()=>{
+        props.getData(paperTotal, previousTotal, props.index);
+    }, [paperTotal])
 
         return(
              <Container>
                 <p>Individual work</p>
                 <Label>Work grade</Label>
                 <p></p>
-                <Input type="number" onChange={handleGradePercent} defaultValue={1} value={gradePercent}/>
+                <Input type="number" onChange={handleGradePercent} defaultValue={0} value={gradePercent}/>
 
                 <Label>Percent of grade</Label>
-                <Input type="number" onChange={handlePercentOfGrade} defaultValue={1} value={percentOfGrade}/>
-                <button onClick={()=>props.getData((Math.round(total)))}>Button for alert</button>
-                <p>Total: {Math.round(total)}%</p>
+                <Input type="number" onChange={handlePercentOfGrade} defaultValue={0} value={percentOfGrade}/>
+                <p>Total: {paperTotal}%</p>
                 <br/>
             </Container>
     )

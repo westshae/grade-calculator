@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, {useState} from "react"
+import React, { useState, useRef, useEffect } from "react"
 
 //Component import
 import Paper from "./paper"
@@ -12,13 +12,25 @@ const Label = styled.label`
     display:flexbox;
 `
 
+const SubLabel = styled.label`
+    display:flexbox;
+`
+
 const Input = styled.input`
     display:flexbox;
 `
 
 const Course = () =>{
-    const [numPapers, setNumPapers] = useState(1);
-    const [total, setTotal] = useState(1);
+    const [numPapers, setNumPapers] = useState(0);
+    const [classTotal, setClassTotal] = useState(0);
+
+    const prevPapersRef = useRef()
+
+    useEffect(()=>{
+        prevPapersRef.current = numPapers;
+    })
+
+    const prevPapers = prevPapersRef.current
 
     const handleInputs = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
@@ -31,28 +43,35 @@ const Course = () =>{
         if(valueInt > 15){valueInt = 15;}
         if(valueInt <= 0){valueInt = 1;}
 
-
         setNumPapers(valueInt);
     }
 
-    const getValue = (test) =>{
-        alert(test)
+    const getValue = (paperTotal, previousTotal) =>{
+        if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
+        if(numPapers == prevPapers){
+            setClassTotal((classTotal-previousTotal) + paperTotal);
+        }else{
+            setClassTotal((classTotal) + paperTotal);
+        }
     }
+
 
     return(
         <div>
             <Container>
                 <Label>Number of assignments/tests (Anything you're marked for)</Label>
-                <Input type="number" onChange={handleInputs} defaultValue={1} value={numPapers}/>
+                <Input type="number" onChange={handleInputs} defaultValue={0} value={numPapers}/>
+                <SubLabel>/Make lighter text/Please don't edit previous papers after adding a new paper, it causes the total to bug out.</SubLabel>
+
             </Container>
 
             <br/>
 
             {Array(numPapers).fill().map((item, index)=>{
-                return <Paper getData={getValue} key={index}/>
+                return <Paper getData={getValue} key={index }index={index}/>
             })}
 
-            <p>Paper Total: {total}</p>
+            <p>Class Total: {classTotal}</p>
         </div>
     )
 }
