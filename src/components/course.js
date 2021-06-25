@@ -25,12 +25,8 @@ const Course = (props) =>{
     const [paperList, setPaperList] = useState([])
 
 
-    const prevPapersRef = useRef()
-
-    useEffect(()=>{
-        prevPapersRef.current = numPapers;
-    })
-
+    const prevPapersRef = useRef();
+    useEffect(()=>{prevPapersRef.current = numPapers})
     const prevPapers = prevPapersRef.current
 
     const handleInputs = e => {
