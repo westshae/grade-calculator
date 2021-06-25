@@ -81,8 +81,13 @@ const Paper = (props) =>{
     }, [percentOfGrade, gradePercent])
 
     useEffect(()=>{
-        props.getData(paperTotal, previousPaperTotal);
+        props.getData(paperTotal, previousPaperTotal, props.index);
+        console.log("paper total change")
     }, [paperTotal])
+
+    useEffect(()=>{
+        console.log("paper effects")
+    })
 
         return(
              <Container>
