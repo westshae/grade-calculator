@@ -33,36 +33,27 @@ const Initiate = () =>{
     //When the number of courses change, it adds or removes a course component from the list that is rendered
     useEffect(()=>{
         const array = courseComponentList;
-        console.log(numCourses + ":::" + previousNumCourses)
-
         if(numCourses < previousNumCourses){
-            console.log("option 2")
             array.pop();
-            setCount(count-1)
-
+            setCount(count-1)//Updates state, which keeps displays up to date.
         }else if(numCourses > previousNumCourses){
-            console.log("option 3")
-            array.push(<p>test</p>);
-            setCount(count+1)
-
+            array.push(<Course getData={getValue} key={array.length}/>);
+            setCount(count+1)//Updates state, which keeps displays up to date.
         }
-        console.log(array)
         setCourseComponentList(array);
     },[numCourses]);
 
 
+    //Handles number of course changes, validates input field data
     const handleNumCoursesChange = e =>{
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
-        if(isNaN(value)){value = 1;}
+        if(isNaN(value)){value = parseInt(value);}
+        if(value > 10){value = 10;}
+        if(value <= 0){value = 1;}
 
-        //Checks if the values fit the correct range, if not changes value
-        let valueInt = parseInt(value);
-        if(valueInt > 10){valueInt = 10;}
-        if(valueInt <= 0){valueInt = 1;}
-
-        setNumCourses(valueInt)
+        setNumCourses(value)
     }
 
     //Runs when the child calls it, which allows setting of parent (initate) state
@@ -74,15 +65,6 @@ const Initiate = () =>{
         // }
         console.log("getValueCalled");
     }
-
-    //Returns a list of papers based on numCourses
-    // useEffect(()=>{
-    //     if(showCourses == true){
-    //         Array(numCourses).fill().map((item, index)=>{
-    //             return <Course getData={getValue} key={index}/>
-    //         })
-    //     }
-    // },[showCourses])
 
     return(
         <div>
