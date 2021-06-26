@@ -6,6 +6,12 @@ import Paper from "./paper"
 
 const Container = styled.div`
     display:flexbox;
+    flex-direction:column;
+`
+
+const PaperContainer = styled.div`
+    display:grid;
+    grid-template-rows:1fr;
 `
 
 const Label = styled.label`
@@ -18,62 +24,67 @@ const Input = styled.input`
 
 const Course = (props) =>{
     const [numPapers, setNumPapers] = useState(0);
-    const [classTotal, setClassTotal] = useState(0);
-    const [previousCourseTotal, setPreviousCourseTotal] = useState(0);
-    useEffect(()=>{setPreviousCourseTotal(classTotal)}, [classTotal])
+    const [paperComponentList, setPaperComponentList] = useState(Array(numPapers).fill());
 
-    const [paperList, setPaperList] = useState([])
+    const [count, setCount] = useState(0);//Used to update component loading, very hacky.
+
+    const previousNumPapersRef = useRef();
+    useEffect(()=>{previousNumPapersRef.current = numPapers})
+    const previousNumPapers = previousNumPapersRef.current;
 
 
-    const prevPapersRef = useRef();
-    useEffect(()=>{prevPapersRef.current = numPapers})
-    const prevPapers = prevPapersRef.current
+    // const [classTotal, setClassTotal] = useState(0);
+    // const [previousCourseTotal, setPreviousCourseTotal] = useState(0);
+    // useEffect(()=>{setPreviousCourseTotal(classTotal)}, [classTotal])
+
+    useEffect(()=>{
+        const array = paperComponentList;
+        if(numPapers < previousNumPapers){
+            array.pop();
+            setCount(count-1)//Updates state, which keeps displays up to date.
+        }else if(numPapers > previousNumPapers){
+            array.push(<Paper getData={getValue} key={array.length}/>);
+            setCount(count+1)//Updates state, which keeps displays up to date.
+        }
+        setPaperComponentList(array);
+    },[numPapers]);
 
     const handleInputs = e => {
         //Checks if the value isn't a string, if it isn't changes value to 1
         let value = e.target.value;
         if(!Boolean(value)){value = 1;}
-        if(isNaN(value)){value = 1;}
+        if(isNaN(value)){value = parseInt(value);}
+        if(value > 15){value = 15;}
+        if(value <= 0){value = 1;}
 
-        //Checks if the values fit the correct range, if not changes value
-        let valueInt = parseInt(value);
-        if(valueInt > 15){valueInt = 15;}
-        if(valueInt <= 0){valueInt = 1;}
-
-        setNumPapers(valueInt);
+        setNumPapers(value);
     }
 
-    // const getValue = (paperTotal, previousTotal) =>{
-    //     if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
-    //     if(numPapers === prevPapers){
-    //         setClassTotal((classTotal-previousTotal) + paperTotal);
-    //     }else{
-    //         setClassTotal((classTotal) + paperTotal);
-    //     }
-    // }
+
     const getValue = (paperTotal, previousTotal, index) =>{
             // if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
 
-            const list = paperList
+            // const list = paperList
 
-            console.log(prevPapers)
-            console.log(numPapers)
+            // console.log(prevPapers)
+            // console.log(numPapers)
 
-            if(typeof list[index] === "undefined"){
-                console.log("adding new")
-                list.push(paperTotal)
-            }else if(numPapers > prevPapers){
-                console.log("removing ")
-                list.pop();
-            }
-            console.log(list)
-            setPaperList(list)
+            // if(typeof list[index] === "undefined"){
+            //     console.log("adding new")
+            //     list.push(paperTotal)
+            // }else if(numPapers > prevPapers){
+            //     console.log("removing ")
+            //     list.pop();
+            // }
+            // console.log(list)
+            // setPaperList(list)
+            console.log("papers/getValue")
         }
 
-    useEffect(()=>{
-        console.log("getData call because numPapers changed")
-        props.getData(classTotal, previousCourseTotal);
-    }, [numPapers])
+    // useEffect(()=>{
+    //     console.log("getData call because numPapers changed")
+    //     props.getData(classTotal, previousCourseTotal);
+    // }, [numPapers])
 
 
 
@@ -86,11 +97,11 @@ const Course = (props) =>{
 
             <br/>
 
-            {Array(numPapers).fill().map((item, index)=>{
-                return <Paper getData={getValue} key={index }/>
-            })}
+            <PaperContainer>
+                {paperComponentList}
+            </PaperContainer>
 
-            <p>Class Total: {classTotal}</p>
+            {/* <p>Class Total: {classTotal}</p> */}
         </div>
     )
 }

@@ -23,7 +23,9 @@ const Initiate = () =>{
     const [numCourses, setNumCourses] = useState(0);
     // const [courseTotalList, setCourseTotalList] = useState(Array(numCourses).fill());
     const [courseComponentList, setCourseComponentList] = useState(Array(numCourses).fill())
-    const [count, setCount] = useState(0);
+    
+
+    const [count, setCount] = useState(0); //Used to update component loading, very hacky.
 
     //Saves previous number of courses
     const previousNumCoursesRef = useRef();
