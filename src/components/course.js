@@ -56,16 +56,16 @@ const Course = (props) =>{
         setPaperComponentList(array);
     },[numPapers]);
 
-    const handleInputs = e => {
-        //Checks if the value isn't a string, if it isn't changes value to 1
-        let value = e.target.value;
-        if(!Boolean(value)){value = 1;}
-        if(isNaN(value)){value = parseInt(value);}
-        if(value > 15){value = 15;}
-        if(value <= 0){value = 1;}
+    // const handleInputs = e => {
+    //     //Checks if the value isn't a string, if it isn't changes value to 1
+    //     let value = e.target.value;
+    //     if(!Boolean(value)){value = 1;}
+    //     if(isNaN(value)){value = parseInt(value);}
+    //     if(value > 15){value = 15;}
+    //     if(value <= 0){value = 1;}
 
-        setNumPapers(value);
-    }
+    //     setNumPapers(value);
+    // }
 
 
     const getValue = (paperTotal, previousTotal, index) =>{
@@ -99,15 +99,18 @@ const Course = (props) =>{
             console.log(array)
 
             setPaperTotalList(array)
-
-
-            // console.log("papers/getValue")
         }
 
-    useEffect(()=>{
-        console.log("getData call because numPapers changed")
-        props.getData(classTotal, previousClassTotal);
-    }, [numPapers])
+    const handleButton = (change) =>{
+        //increasedecrease, true=inc, false=dec
+        const check = numPapers;
+        console.log(check)
+        if(change == true && check < 15){
+            setNumPapers(numPapers + 1);
+        }else if (change==false && check > 1){
+            setNumPapers(numPapers - 1);
+        }
+    }
 
 
 
@@ -115,7 +118,9 @@ const Course = (props) =>{
         <div>
             <Container>
                 <Label>Number of assignments/tests (Anything you're marked for)</Label>
-                <Input type="number" onChange={handleInputs} defaultValue={0} value={numPapers}/>
+                <p>{numPapers}</p>
+                <button onClick={()=>handleButton(true)}>Increase courses</button>
+                <button onClick={()=>handleButton(false)}>Decrease courses</button>
             </Container>
 
             <br/>
