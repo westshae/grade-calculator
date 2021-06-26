@@ -20,7 +20,7 @@ const Input = styled.input`
 `
 
 const Initiate = () =>{
-    const [numCourses, setNumCourses] = useState(0);
+    const [numCourses, setNumCourses] = useState(1);
     // const [courseTotalList, setCourseTotalList] = useState(Array(numCourses).fill());
     const [courseComponentList, setCourseComponentList] = useState(Array(numCourses).fill())
     
@@ -68,11 +68,26 @@ const Initiate = () =>{
         console.log("getValueCalled");
     }
 
+    const handleButton = (change) =>{
+        //increasedecrease, true=inc, false=dec
+        const check = numCourses;
+        console.log(check)
+        if(change == true && check < 15){
+            setNumCourses(numCourses + 1);
+        }else if (change==false && check > 1){
+            setNumCourses(numCourses - 1);
+        }
+    }
+
     return(
         <div>
             <Container>
                 <Label>Number of classes to calculate</Label>
-                <Input type="number" onChange={handleNumCoursesChange} value={numCourses} defaultValue={0}/>
+                {/* <Input type="number" onChange={handleNumCoursesChange} value={numCourses} defaultValue={0}/> */}
+                <p>{numCourses}</p>
+                <button onClick={()=>handleButton(true)}>Increase courses</button>
+                <button onClick={()=>handleButton(false)}>Decrease courses</button>
+
             </Container>
 
             <br/><br/>

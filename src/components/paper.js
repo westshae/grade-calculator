@@ -35,7 +35,11 @@ const Paper = (props) =>{
             case (isNaN(value)):
                 break;
             default:
-                valueInt = parseInt(value)
+                try{
+                    valueInt = parseInt(value)
+                }catch(error){
+                    console.log(error)
+                }
         }
 
         switch(valueInt){
@@ -61,6 +65,7 @@ const Paper = (props) =>{
                 break;
             default:
                 valueInt = parseInt(value)
+                
         }
 
         switch(valueInt){
