@@ -23,7 +23,7 @@ const Initiate = () =>{
 
         if(change === true && numCourses < 15){
             setNumCourses(numCourses + 1);
-            componentList.push(<Course key={componentList.length} index={componentList.length}/>);
+            componentList.push(<Course key={componentList.length} index={componentList.length} callback={updateCourseResults}/>);
             totalList.push(0);
         }else if (change===false && numCourses > 1){
             setNumCourses(numCourses - 1);
@@ -35,6 +35,17 @@ const Initiate = () =>{
         setCourseTotalList(totalList);
     }
 
+    const updateCourseResults = (index, courseTotal) =>{
+        console.log("5")
+        console.log("handled course total 2/2")
+        const totalList = courseTotalList;
+        totalList.splice(index, 1, courseTotal);
+        setCourseTotalList(totalList);
+
+        console.log(totalList);
+        console.log("updated Total List")
+    }
+
     return(
         <div>
             <Container>
@@ -42,6 +53,9 @@ const Initiate = () =>{
                 <p>{numCourses}</p>
                 <button onClick={()=>handleButton(true)}>Increase courses</button>
                 <button onClick={()=>handleButton(false)}>Decrease courses</button>
+                <br/>
+                {/* <button onClick={()=>updateCourseResults}>Update Course Results</button> */}
+
             </Container>
 
             <br/><br/>
@@ -49,6 +63,7 @@ const Initiate = () =>{
             <Container>
                 {courseComponentList}
             </Container>
+            <p>Year total:{}</p>
         </div>
     )
     

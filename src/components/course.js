@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { useState} from "react"
+import React, { useState, useEffect} from "react"
 
 //Component import
 import Paper from "./paper"
@@ -23,38 +23,47 @@ const Course = (props) =>{
     const [numPapers, setNumPapers] = useState(0);
     const [paperComponentList, setPaperComponentList] = useState(Array(numPapers).fill());
     const [paperTotalList, setPaperTotalList] = useState(Array(numPapers).fill());
+    const [courseTotal, setCourseTotal] = useState(0);
+    const [count, setCount] = useState(0);
 
-    const [classTotal, setClassTotal] = useState(0);
-
-    //Saves the previous number of papers via refs
-    // const previousNumPapersRef = useRef();
-    // useEffect(()=>{previousNumPapersRef.current = numPapers})
-    // const previousNumPapers = previousNumPapersRef.current;
-
-    const getValue = (paperTotal, previousTotal, index) =>{
-
-        }
-
-        const handleButton = (change) =>{
-            //change true = increase, false = decrease
-            const componentList = paperComponentList;
-            const totalList = paperTotalList;
+    const handleButton = (change) =>{
+        //change true = increase, false = decrease
+        const componentList = paperComponentList;
+        const totalList = paperTotalList;
     
-            if(change === true && numPapers < 15){
-                setNumPapers(numPapers + 1);
-                componentList.push(<Paper key={componentList.length} index={componentList.length}/>);
-                totalList.push(0);
-            }else if (change===false && numPapers > 1){
-                setNumPapers(numPapers - 1);
-                componentList.pop();
-            totalList.pop();
-            }
+        if(change === true && numPapers < 15){
+            setNumPapers(numPapers + 1);
+            componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals}/>);
+            setCount(count + 1);
+            totalList.push(0);
+        }else if (change===false && numPapers > 1){
+            setNumPapers(numPapers - 1);
+            componentList.pop();
+        totalList.pop();
+        }
     
         setPaperComponentList(componentList)
         setPaperTotalList(totalList);
     }
 
+    const updatePaperTotals = (index, paperTotal) =>{
+        const totalList = paperTotalList.slice();
+        totalList.splice(index, 1, paperTotal)
+        setPaperTotalList(totalList);
+    }
 
+    useEffect(()=>{
+        const totalList = paperTotalList.slice();
+        const sum = totalList.reduce((total, n) => total + n, 0);
+        console.log("NFAJAHGJH: " + sum)
+        setCourseTotal(sum)
+    },[paperTotalList])
+
+    // useEffect(()=>{
+    //     console.log("4")
+    //     console.log("send course total to initiate 1/2")
+    //     props.callback(props.index, courseTotal);
+    // }, [courseTotal])
 
     return(
         <div>
@@ -63,7 +72,6 @@ const Course = (props) =>{
                 <p>{numPapers}</p>
                 <button onClick={()=>handleButton(true)}>Increase courses</button>
                 <button onClick={()=>handleButton(false)}>Decrease courses</button>
-                <button>Calculate class results</button>
             </Container>
 
             <br/>
@@ -72,7 +80,7 @@ const Course = (props) =>{
                 {paperComponentList}
             </PaperContainer>
 
-            <p>Class Total: {classTotal}</p>
+            <p>Course Total: {courseTotal}</p>
         </div>
     )
 }

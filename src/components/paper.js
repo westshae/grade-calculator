@@ -15,15 +15,10 @@ const Container = styled.div`
     flex-direction:row;
 `
 
-const Paper = () =>{
+const Paper = (props) =>{
     const [gradePercent, setGradePercent] = useState(0);
     const [percentOfGrade, setPercentOfGrade] = useState(0);
-
     const [paperTotal, setPaperTotal] = useState(0);
-
-    useEffect(()=>{
-        setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1))
-    }, [gradePercent, percentOfGrade])
 
     const handleGradePercent = e => {
         let value = e.target.value;
@@ -49,11 +44,18 @@ const Paper = () =>{
         setPercentOfGrade(value)
     }
 
+    useEffect(()=>{
+        setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1));
+    }, [gradePercent, percentOfGrade])
+
+    useEffect(()=>{
+        props.callback(props.index, paperTotal);
+    }, [paperTotal])
+
     return(
          <Container>
-            <p>Individual work</p>
+            <p>Individual work {props.index}</p>
             <Label>Work grade</Label>
-            <p></p>
             <Input type="number" onChange={handleGradePercent} value={gradePercent}/>
 
             <Label>Percent of grade</Label>
