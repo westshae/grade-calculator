@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //Component imports
 import Course from "./course"
-import React, {useState, useRef, useEffect, Fragment} from "react"
+import React, {useState, useRef, useEffect} from "react"
 
 const Container = styled.div`
     display:flexbox;
@@ -39,7 +39,7 @@ const Initiate = () =>{
             array.pop();
             setCount(count-1)//Updates state, which keeps displays up to date.
         }else if(numCourses > previousNumCourses){
-            array.push(<Course getData={getValue} key={array.length}/>);
+            array.push(<Course getData={getValue} key={array.length} index={array.length}/>);
             setCount(count+1)//Updates state, which keeps displays up to date.
         }
         setCourseComponentList(array);

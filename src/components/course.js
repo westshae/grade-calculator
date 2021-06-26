@@ -25,25 +25,29 @@ const Input = styled.input`
 const Course = (props) =>{
     const [numPapers, setNumPapers] = useState(0);
     const [paperComponentList, setPaperComponentList] = useState(Array(numPapers).fill());
+    const [paperTotalList, setPaperTotalList] = useState(Array(numPapers).fill());
 
+    const [classTotal, setClassTotal] = useState(0);
     const [count, setCount] = useState(0);//Used to update component loading, very hacky.
 
+    //Saves the previous number of papers via refs
     const previousNumPapersRef = useRef();
     useEffect(()=>{previousNumPapersRef.current = numPapers})
     const previousNumPapers = previousNumPapersRef.current;
 
+    //Saves the previous class total to previousClassTotal via refs
+    const previousClassTotalRef = useRef();
+    useEffect(()=>{previousClassTotalRef.current = classTotal})
+    const previousClassTotal = previousClassTotalRef.current;
 
-    // const [classTotal, setClassTotal] = useState(0);
-    // const [previousCourseTotal, setPreviousCourseTotal] = useState(0);
-    // useEffect(()=>{setPreviousCourseTotal(classTotal)}, [classTotal])
-
+    //When the number of paper changes, it will either add or remove a paper from the list
     useEffect(()=>{
         const array = paperComponentList;
         if(numPapers < previousNumPapers){
             array.pop();
             setCount(count-1)//Updates state, which keeps displays up to date.
         }else if(numPapers > previousNumPapers){
-            array.push(<Paper getData={getValue} key={array.length}/>);
+            array.push(<Paper getData={getValue} key={array.length} index={array.length}/>);
             setCount(count+1)//Updates state, which keeps displays up to date.
         }
         setPaperComponentList(array);
@@ -62,23 +66,36 @@ const Course = (props) =>{
 
 
     const getValue = (paperTotal, previousTotal, index) =>{
-            // if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
+            if(isNaN(paperTotal) || isNaN(previousTotal)){return;}
 
-            // const list = paperList
+            const array = paperTotalList
 
-            // console.log(prevPapers)
-            // console.log(numPapers)
+            console.log(previousNumPapers)
+            console.log(numPapers)
 
-            // if(typeof list[index] === "undefined"){
-            //     console.log("adding new")
-            //     list.push(paperTotal)
-            // }else if(numPapers > prevPapers){
-            //     console.log("removing ")
-            //     list.pop();
-            // }
-            // console.log(list)
-            // setPaperList(list)
-            console.log("papers/getValue")
+            //Removes the total from the list
+            if(numPapers < previousNumPapers){
+                console.log("SPLICE INDEX:" + index)
+                array.splice(index);
+                setCount(count + 1);
+            }
+            //Adds the total to the list
+            else if(numPapers > previousNumPapers){
+                console.log("PUSH" + paperTotal)
+
+                const indexToRemove = array.indexOf(previousTotal)
+                if(indexToRemove !== -1){
+                    array.splice(indexToRemove);
+                }
+                array.push(paperTotal)
+            }
+
+            console.log(array)
+
+            setPaperTotalList(array)
+
+
+            // console.log("papers/getValue")
         }
 
     // useEffect(()=>{
@@ -101,7 +118,7 @@ const Course = (props) =>{
                 {paperComponentList}
             </PaperContainer>
 
-            {/* <p>Class Total: {classTotal}</p> */}
+            <p>Class Total: {classTotal}</p>
         </div>
     )
 }

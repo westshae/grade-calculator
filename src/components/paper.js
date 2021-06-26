@@ -86,7 +86,7 @@ const Paper = (props) =>{
     }, [paperTotal])
 
     useEffect(()=>{
-        console.log("paper effects")
+        console.log("paper.js change state useEffects")
     })
 
         return(
