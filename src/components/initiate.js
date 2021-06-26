@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //Component imports
 import Course from "./course"
-import React, {useState, useRef, useEffect} from "react"
+import React, {useState} from "react"
 
 const Container = styled.div`
     display:flexbox;
@@ -20,17 +20,19 @@ const Initiate = () =>{
         //change true = increase, false = decrease
         const componentList = courseComponentList;
         const totalList = courseTotalList;
-        if(change == true && numCourses < 15){
+
+        if(change === true && numCourses < 15){
             setNumCourses(numCourses + 1);
-            componentList.push(<Course key={courseComponentList.length} index={courseComponentList.length}/>);
+            componentList.push(<Course key={componentList.length} index={componentList.length}/>);
             totalList.push(0);
-        }else if (change==false && numCourses > 1){
+        }else if (change===false && numCourses > 1){
             setNumCourses(numCourses - 1);
             componentList.pop();
             totalList.pop();
         }
 
         setCourseComponentList(componentList)
+        setCourseTotalList(totalList);
     }
 
     return(

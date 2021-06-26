@@ -15,97 +15,52 @@ const Container = styled.div`
     flex-direction:row;
 `
 
-const Paper = (props) =>{
+const Paper = () =>{
     const [gradePercent, setGradePercent] = useState(0);
     const [percentOfGrade, setPercentOfGrade] = useState(0);
 
     const [paperTotal, setPaperTotal] = useState(0);
-    useEffect(()=>{setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1))}, [gradePercent, percentOfGrade])
 
-    const [previousPaperTotal, setPreviousPaperTotal] = useState(0);
-    useEffect(()=>{setPreviousPaperTotal(paperTotal)}, [paperTotal])
+    useEffect(()=>{
+        setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1))
+    }, [gradePercent, percentOfGrade])
 
     const handleGradePercent = e => {
-        //Checks that the value passed in is a number, and checked that it isn't empty.
         let value = e.target.value;
-        let valueInt = 0;
         switch(value){
-            case (!Boolean(value)):
-                break;
-            case (isNaN(value)):
-                break;
-            default:
-                try{
-                    valueInt = parseInt(value)
-                }catch(error){
-                    console.log(error)
-                }
+            case (!Boolean(value)):break;
+            case (isNaN(value)):break;
+            case (value > 100):break;
+            case (value < 0):break;
         }
 
-        switch(valueInt){
-            case (valueInt > 100):
-                break;
-            case (valueInt < 0):
-                break;
-            default:
-                //Continue
-        }
-
-        setGradePercent(valueInt)
+        setGradePercent(value)
     }
 
     const handlePercentOfGrade = e => {
-        //Checks that the value passed in is a number, and checked that it isn't empty.
         let value = e.target.value;
-        let valueInt = 0;
         switch(value){
-            case (!Boolean(value)):
-                break;
-            case (isNaN(value)):
-                break;
-            default:
-                valueInt = parseInt(value)
-                
+            case (!Boolean(value)):break;
+            case (isNaN(value)):break;
+            case (value > 100):break;
+            case (value < 0):break;
         }
 
-        switch(valueInt){
-            case (valueInt > 100):
-                break;
-            case (valueInt < 0):
-                break;
-            default:
-                //Continue
-        }
-
-        setPercentOfGrade(valueInt)
+        setPercentOfGrade(value)
     }
 
-    useEffect(()=>{
-        setPreviousPaperTotal(paperTotal);
-        setPaperTotal((percentOfGrade*.1)*(gradePercent*0.1));
-    }, [percentOfGrade, gradePercent])
+    return(
+         <Container>
+            <p>Individual work</p>
+            <Label>Work grade</Label>
+            <p></p>
+            <Input type="number" onChange={handleGradePercent} value={gradePercent}/>
 
-    useEffect(()=>{
-        props.getData(paperTotal, previousPaperTotal, props.index);
-        console.log("paper total change")
-    }, [paperTotal])
-
-    useEffect(()=>{
-        console.log("paper.js change state useEffects")
-    })
-
-        return(
-             <Container>
-                <p>Individual work</p>
-                <Label>Work grade</Label>
-                <p></p>
-                <Input type="number" onChange={handleGradePercent} defaultValue={0} value={gradePercent}/>
-
-                <Label>Percent of grade</Label>
-                <Input type="number" onChange={handlePercentOfGrade} defaultValue={0} value={percentOfGrade}/>
-                <p>Total: {paperTotal}%</p>
-                <br/>
-            </Container>
+            <Label>Percent of grade</Label>
+            <Input type="number" onChange={handlePercentOfGrade} value={percentOfGrade}/>
+            <p>Total: {paperTotal}%</p>
+            <br/>
+        </Container>
     )
 }
 
