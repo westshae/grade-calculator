@@ -13,38 +13,39 @@ const Container = styled.div`
 
 const Initiate = () =>{
     const [numCourses, setNumCourses] = useState(0);
-    const [courseTotalList, setCourseTotalList] = useState(Array(numCourses).fill());
-    const [courseComponentList, setCourseComponentList] = useState(Array(numCourses).fill())
+    const [courseTotalList, setCourseTotalList] = useState(Array(0).fill());
+    const [courseComponentList, setCourseComponentList] = useState(Array(0).fill())
     const [yearTotal, setYearTotal] = useState();
 
+    //Handles increase/decrease buttons
     const handleButton = (change) =>{
-        //change true = increase, false = decrease
         const componentList = courseComponentList;
-        const totalList = courseTotalList;
 
+        //true == increase
         if(change === true && numCourses < 15){
+            //Increases the numCourses value and adds a course to the componentList to be rendered
             setNumCourses(numCourses + 1);
             componentList.push(<Course key={componentList.length} index={componentList.length} callback={updateCourseResults}/>);
-            totalList.push(0);
-        }else if (change===false && numCourses > 1){
+        }
+        //false == decrease
+        else if (change===false && numCourses > 1){
+            //Decreases the numCourses value and removes the last course in the componentList to be rendered
             setNumCourses(numCourses - 1);
             componentList.pop();
-            totalList.pop();
         }
 
         setCourseComponentList(componentList)
-        setCourseTotalList(totalList);
     }
 
+    //Callback function that is called by course component
     const updateCourseResults = (index, courseTotal) =>{
+        //Replaces the value at the index with the new course total
         let totalList = courseTotalList;
         totalList.splice(index, 1, courseTotal)
 
+        //Sets the courseTotalList state, as well as updates the year total value
         setCourseTotalList(totalList);
-
-        const reducer = (sum, add)=> sum + add;
-        const total = totalList.reduce(reducer, 0)
-        setYearTotal(total);
+        setYearTotal(totalList.reduce((sum, add)=> sum + add, 0));
     }
 
     return(

@@ -64,7 +64,6 @@ const Course = (props) =>{
                 <p>{numPapers}</p>
                 <button onClick={()=>handleButton(true)}>Increase courses</button>
                 <button onClick={()=>handleButton(false)}>Decrease courses</button>
-                <p>{paperTotalList}</p>
             </Container>
 
             <br/>
