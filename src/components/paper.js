@@ -27,6 +27,7 @@ const Paper = (props) =>{
             case (isNaN(value)):break;
             case (value > 100):break;
             case (value < 0):break;
+            default://continue
         }
 
         setGradePercent(value)
@@ -39,6 +40,7 @@ const Paper = (props) =>{
             case (isNaN(value)):break;
             case (value > 100):break;
             case (value < 0):break;
+            default://continue
         }
 
         setPercentOfGrade(value)
@@ -49,16 +51,6 @@ const Paper = (props) =>{
     }, [gradePercent, percentOfGrade])
 
     useEffect(()=>{
-        console.log("\n")
-        console.log("\n")
-        console.log("\n")
-        console.log("\n")
-        console.log("\n")
-        console.log("\n")
-
-        console.log("index then paperTotal")
-        console.log(props.index);
-        console.log(paperTotal)
         props.callback(props.index, paperTotal);
     }, [paperTotal])
 

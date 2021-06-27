@@ -45,24 +45,6 @@ const Initiate = () =>{
         const reducer = (sum, add)=> sum + add;
         const total = totalList.reduce(reducer, 0)
         setYearTotal(total);
-
-        // props.callback(props.index, total);
-
-
-
-        // console.log("5")
-        // console.log("handled course total 2/2")
-        // console.log("bagjfdbkjhgsf")
-        // console.log(courseTotal)
-        // console.log("bagjfdbkjhgsf")
-
-        // // const totalList = courseTotalList;
-        // // totalList.splice(index, 1, courseTotal);
-        // // setCourseTotalList(courseTotal);
-        // setYearTotal(courseTotal)
-
-        // console.log(totalList);
-        // console.log("updated Total List")
     }
 
     return(
@@ -73,8 +55,6 @@ const Initiate = () =>{
                 <button onClick={()=>handleButton(true)}>Increase courses</button>
                 <button onClick={()=>handleButton(false)}>Decrease courses</button>
                 <br/>
-                {/* <button onClick={()=>updateCourseResults}>Update Course Results</button> */}
-
             </Container>
 
             <br/><br/>
