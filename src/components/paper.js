@@ -20,6 +20,7 @@ const Paper = (props) =>{
     const [percentOfGrade, setPercentOfGrade] = useState(null);
     const [paperTotal, setPaperTotal] = useState(null);
 
+    //Handles input change of gradePercent
     const handleGradePercent = e => {
         let value = e.target.value;
         switch(value){
@@ -33,7 +34,9 @@ const Paper = (props) =>{
         setGradePercent(value)
     }
 
+    //Handles input change of percentOfGrade
     const handlePercentOfGrade = e => {
+        //Validates the entry received
         let value = e.target.value;
         switch(value){
             case (!Boolean(value)):break;
@@ -46,10 +49,13 @@ const Paper = (props) =>{
         setPercentOfGrade(value)
     }
 
+    //Detects change of gradePercent or percentOfgrade and sets paperTotal
     useEffect(()=>{
         setPaperTotal((gradePercent*0.1)*(percentOfGrade*0.1));
     }, [gradePercent, percentOfGrade])
 
+    //Detects change of paperTotal then sends index and paper total to course.js
+    //Seperate from above useEffect for syncing data
     useEffect(()=>{
         props.callback(props.index, paperTotal);
     }, [paperTotal])
