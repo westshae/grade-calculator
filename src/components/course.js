@@ -21,49 +21,41 @@ const Label = styled.label`
 
 const Course = (props) =>{
     const [numPapers, setNumPapers] = useState(0);
-    const [paperComponentList, setPaperComponentList] = useState(Array(numPapers).fill());
-    const [paperTotalList, setPaperTotalList] = useState(Array(numPapers).fill());
-    const [courseTotal, setCourseTotal] = useState(0);
+    const [paperComponentList, setPaperComponentList] = useState(Array(1).fill());
+    const [paperTotalList, setPaperTotalList] = useState([]);
+    const [courseTotal, setCourseTotal] = useState();
     const [count, setCount] = useState(0);
 
     const handleButton = (change) =>{
         //change true = increase, false = decrease
+
         const componentList = paperComponentList;
-        const totalList = paperTotalList;
     
         if(change === true && numPapers < 15){
             setNumPapers(numPapers + 1);
             componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals}/>);
             setCount(count + 1);
-            totalList.push(0);
         }else if (change===false && numPapers > 1){
             setNumPapers(numPapers - 1);
             componentList.pop();
-        totalList.pop();
         }
     
         setPaperComponentList(componentList)
-        setPaperTotalList(totalList);
     }
 
     const updatePaperTotals = (index, paperTotal) =>{
-        const totalList = paperTotalList.slice();
+        let totalList = paperTotalList;
         totalList.splice(index, 1, paperTotal)
+
         setPaperTotalList(totalList);
+
+        const reducer = (sum, add)=> sum + add;
+        const total = totalList.reduce(reducer, 0)
+        setCourseTotal(total);
+
+        props.callback(props.index, total);
+
     }
-
-    useEffect(()=>{
-        const totalList = paperTotalList.slice();
-        const sum = totalList.reduce((total, n) => total + n, 0);
-        console.log("NFAJAHGJH: " + sum)
-        setCourseTotal(sum)
-    },[paperTotalList])
-
-    // useEffect(()=>{
-    //     console.log("4")
-    //     console.log("send course total to initiate 1/2")
-    //     props.callback(props.index, courseTotal);
-    // }, [courseTotal])
 
     return(
         <div>
@@ -72,6 +64,7 @@ const Course = (props) =>{
                 <p>{numPapers}</p>
                 <button onClick={()=>handleButton(true)}>Increase courses</button>
                 <button onClick={()=>handleButton(false)}>Decrease courses</button>
+                <p>{paperTotalList}</p>
             </Container>
 
             <br/>

@@ -15,6 +15,7 @@ const Initiate = () =>{
     const [numCourses, setNumCourses] = useState(0);
     const [courseTotalList, setCourseTotalList] = useState(Array(numCourses).fill());
     const [courseComponentList, setCourseComponentList] = useState(Array(numCourses).fill())
+    const [yearTotal, setYearTotal] = useState();
 
     const handleButton = (change) =>{
         //change true = increase, false = decrease
@@ -36,14 +37,32 @@ const Initiate = () =>{
     }
 
     const updateCourseResults = (index, courseTotal) =>{
-        console.log("5")
-        console.log("handled course total 2/2")
-        const totalList = courseTotalList;
-        totalList.splice(index, 1, courseTotal);
+        let totalList = courseTotalList;
+        totalList.splice(index, 1, courseTotal)
+
         setCourseTotalList(totalList);
 
-        console.log(totalList);
-        console.log("updated Total List")
+        const reducer = (sum, add)=> sum + add;
+        const total = totalList.reduce(reducer, 0)
+        setYearTotal(total);
+
+        // props.callback(props.index, total);
+
+
+
+        // console.log("5")
+        // console.log("handled course total 2/2")
+        // console.log("bagjfdbkjhgsf")
+        // console.log(courseTotal)
+        // console.log("bagjfdbkjhgsf")
+
+        // // const totalList = courseTotalList;
+        // // totalList.splice(index, 1, courseTotal);
+        // // setCourseTotalList(courseTotal);
+        // setYearTotal(courseTotal)
+
+        // console.log(totalList);
+        // console.log("updated Total List")
     }
 
     return(
@@ -63,7 +82,7 @@ const Initiate = () =>{
             <Container>
                 {courseComponentList}
             </Container>
-            <p>Year total:{}</p>
+            <p>Year total:{yearTotal}</p>
         </div>
     )
     

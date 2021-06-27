@@ -16,9 +16,9 @@ const Container = styled.div`
 `
 
 const Paper = (props) =>{
-    const [gradePercent, setGradePercent] = useState(0);
-    const [percentOfGrade, setPercentOfGrade] = useState(0);
-    const [paperTotal, setPaperTotal] = useState(0);
+    const [gradePercent, setGradePercent] = useState(null);
+    const [percentOfGrade, setPercentOfGrade] = useState(null);
+    const [paperTotal, setPaperTotal] = useState(null);
 
     const handleGradePercent = e => {
         let value = e.target.value;
@@ -49,6 +49,16 @@ const Paper = (props) =>{
     }, [gradePercent, percentOfGrade])
 
     useEffect(()=>{
+        console.log("\n")
+        console.log("\n")
+        console.log("\n")
+        console.log("\n")
+        console.log("\n")
+        console.log("\n")
+
+        console.log("index then paperTotal")
+        console.log(props.index);
+        console.log(paperTotal)
         props.callback(props.index, paperTotal);
     }, [paperTotal])
 
