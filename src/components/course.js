@@ -26,16 +26,20 @@ const Course = (props) =>{
     const [courseTotal, setCourseTotal] = useState();
     const [count, setCount] = useState(0);
 
+    //Handles increase/decrease button
     const handleButton = (change) =>{
-        //change true = increase, false = decrease
-
         const componentList = paperComponentList;
-    
+
+        //true == increase
         if(change === true && numPapers < 15){
+            //Increases the numCourses value and adds a course to the componentList to be rendered
             setNumPapers(numPapers + 1);
             componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals}/>);
-            setCount(count + 1);
-        }else if (change===false && numPapers > 1){
+            setCount(count + 1); 
+        }
+        //false == decrease
+        else if (change===false && numPapers > 1){
+            //Decreases the numCourses value and removes the last course in the componentList to be rendered
             setNumPapers(numPapers - 1);
             componentList.pop();
         }
@@ -43,18 +47,20 @@ const Course = (props) =>{
         setPaperComponentList(componentList)
     }
 
+    //Callback function that is called by paper component
     const updatePaperTotals = (index, paperTotal) =>{
+        //Replaces the value at the index with the new course total
         let totalList = paperTotalList;
         totalList.splice(index, 1, paperTotal)
 
+
+        //Sets the courseTotalList state, as well as updates the year total value
+        const total = totalList.reduce((sum, add)=> sum + add, 0);
+        setCourseTotal(total);
         setPaperTotalList(totalList);
 
-        const reducer = (sum, add)=> sum + add;
-        const total = totalList.reduce(reducer, 0)
-        setCourseTotal(total);
-
+        //Sends total and index to initiate.js
         props.callback(props.index, total);
-
     }
 
     return(
