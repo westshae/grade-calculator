@@ -9,6 +9,15 @@ const Container = styled.div`
     flex-direction:column;
 `
 
+const ButtonContainer = styled.div`
+    display:grid;
+    grid-template-columns:1fr;
+`
+
+const Button = styled.button`
+
+`
+
 const PaperContainer = styled.div`
     display:grid;
     grid-template-rows:1fr;
@@ -68,8 +77,10 @@ const Course = (props) =>{
             <Container>
                 <Label>Number of assignments/tests (Anything you're marked for)</Label>
                 <p>{numPapers}</p>
-                <button onClick={()=>handleButton(true)}>Increase courses</button>
-                <button onClick={()=>handleButton(false)}>Decrease courses</button>
+                <ButtonContainer>
+                    <Button onClick={()=>handleButton(true)}>Increase courses</Button>
+                    <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
+                </ButtonContainer>
             </Container>
 
             <br/>

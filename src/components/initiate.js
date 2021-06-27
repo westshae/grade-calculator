@@ -1,14 +1,22 @@
 import styled from "styled-components";
+import React, {useState} from "react"
 
 //Component imports
 import Course from "./course"
-import React, {useState} from "react"
+import {Header, Paragraph, Button} from "../components/styles"
 
 const Container = styled.div`
-    display:flexbox;
-    flex-direction:column;
-    
-    //To change to grid, easier to prototype in flex
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);    
+`
+
+const GUI = styled.div`
+
+`
+
+const ButtonContainer = styled.div`
+    display:grid;
+    grid-template-columns:1fr;
 `
 
 const Initiate = () =>{
@@ -49,22 +57,21 @@ const Initiate = () =>{
     }
 
     return(
-        <div>
-            <Container>
-                <label>Number of classes to calculate</label>
-                <p>{numCourses}</p>
-                <button onClick={()=>handleButton(true)}>Increase courses</button>
-                <button onClick={()=>handleButton(false)}>Decrease courses</button>
-                <br/>
-            </Container>
+        <Container>
+            <GUI>
+                <Header>Number of classes to calculate: {numCourses}</Header>
+                <Header>Year total:{yearTotal}</Header>
 
-            <br/><br/>
+                <ButtonContainer>
+                    <Button onClick={()=>handleButton(true)}>Increase courses</Button>
+                    <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
+                </ButtonContainer>
+            </GUI>
 
             <Container>
                 {courseComponentList}
             </Container>
-            <p>Year total:{yearTotal}</p>
-        </div>
+        </Container>
     )
     
 }

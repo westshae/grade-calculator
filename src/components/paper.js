@@ -1,18 +1,19 @@
 import styled from "styled-components";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 
-const Label = styled.label`
-    display:flexbox;
+const Container = styled.div`
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:1fr;
+`
+
+const Paragraph = styled.p`
+    height:100%;
 `
 
 const Input = styled.input`
-    display:flexbox;
-`
-const Container = styled.div`
-    display:flexbox;
-    flex-direction:row;
+    height:100%;
 `
 
 const Paper = (props) =>{
@@ -63,11 +64,11 @@ const Paper = (props) =>{
     return(
          <Container>
             <p>Individual work {props.index}</p>
-            <Label>Work grade</Label>
-            <Input type="number" onChange={handleGradePercent} value={gradePercent}/>
+            <Paragraph>Work grade</Paragraph>
+            <Input onChange={handleGradePercent} value={gradePercent}/>
 
-            <Label>Percent of grade</Label>
-            <Input type="number" onChange={handlePercentOfGrade} value={percentOfGrade}/>
+            <Paragraph>Percent of grade</Paragraph>
+            <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
             <p>Total: {paperTotal}%</p>
             <br/>
         </Container>
