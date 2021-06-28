@@ -7,6 +7,10 @@ import Initiate from "./components/initiate"
 const Container = styled.div`
   background-color:#f8f8ff;
   display:grid;
+  height:100%;
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
 `
 
 const Header = styled.h1`

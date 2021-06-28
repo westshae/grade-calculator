@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const ButtonContainer = styled.div`
     display:grid;
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
 `
 
 const Button = styled.button`
@@ -21,6 +21,7 @@ const Button = styled.button`
 const PaperContainer = styled.div`
     display:grid;
     grid-template-rows:1fr;
+    grid-row-gap:1rem;
 `
 
 const Label = styled.label`
@@ -43,7 +44,7 @@ const Course = (props) =>{
         if(change === true && numPapers < 15){
             //Increases the numCourses value and adds a course to the componentList to be rendered
             setNumPapers(numPapers + 1);
-            componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals}/>);
+            componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals} id={numPapers}/>);
             setCount(count + 1); 
         }
         //false == decrease

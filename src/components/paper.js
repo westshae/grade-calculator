@@ -6,14 +6,22 @@ const Container = styled.div`
     display:grid;
     grid-template-columns:repeat(6,1fr);
     grid-template-rows:1fr;
+    background-color:pink;
 `
 
 const Paragraph = styled.p`
     height:100%;
+    margin-top:0;
+    margin-bottom:0;
+    text-align:center;    
 `
 
 const Input = styled.input`
-    height:100%;
+    background-color:lime;
+    border:none;
+    height:90%;
+    margin-top:auto;
+    margin-bottom:auto;
 `
 
 const Paper = (props) =>{
@@ -63,14 +71,13 @@ const Paper = (props) =>{
 
     return(
          <Container>
-            <p>Individual work {props.index}</p>
+            <Paragraph>ID:{props.id}</Paragraph>
             <Paragraph>Work grade</Paragraph>
             <Input onChange={handleGradePercent} value={gradePercent}/>
 
             <Paragraph>Percent of grade</Paragraph>
             <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
-            <p>Total: {paperTotal}%</p>
-            <br/>
+            <Paragraph>Total: {paperTotal}%</Paragraph>
         </Container>
     )
 }

@@ -11,6 +11,7 @@ const Header = styled.h1`
 const Container = styled.div`
     display:grid;
     grid-template-columns:repeat(1, 1fr);    
+    
 `
 
 const GUI = styled.div`
@@ -22,15 +23,17 @@ const GUI = styled.div`
 const CourseContainer = styled.div`
     display:grid;
     grid-template-columns:repeat(2, 1fr);   
+    grid-column-gap:1rem;
+
 `
 
 const ButtonContainer = styled.div`
     display:grid;
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
 `
 
 const Button = styled.button`
-    width:50%;
+    width:100%;
     margin:auto;
 `
 
