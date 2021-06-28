@@ -4,24 +4,47 @@ import React, { useState, useEffect } from "react";
 
 const Container = styled.div`
     display:grid;
-    grid-template-columns:repeat(6,1fr);
+    grid-template-columns:repeat(4,1fr);
     grid-template-rows:1fr;
     background-color:pink;
+    
 `
 
 const Paragraph = styled.p`
-    height:100%;
-    margin-top:0;
-    margin-bottom:0;
+    margin-top:auto;
+    margin-bottom:auto;
     text-align:center;    
+    padding-top:5%;
+    padding-bottom:5%;
+    font-size:1.5rem;
+
+`
+
+const ID = styled(Paragraph)`
+    font-size:1.5rem;
+`
+const Total = styled(Paragraph)`
+    font-size:1.5rem;
 `
 
 const Input = styled.input`
     background-color:lime;
     border:none;
-    height:90%;
-    margin-top:auto;
-    margin-bottom:auto;
+    height:100%;
+    padding-top:0;
+    padding-bottom:0;
+    vertical-align:middle;
+
+    width:5rem;
+    text-align:center;
+    font-size:2rem;
+
+    /* font-size:; */
+`
+
+const InputContainer = styled.div`
+    display:flexbox;
+    vertical-align:middle;
 `
 
 const Paper = (props) =>{
@@ -71,13 +94,19 @@ const Paper = (props) =>{
 
     return(
          <Container>
-            <Paragraph>ID:{props.id}</Paragraph>
-            <Paragraph>Work grade</Paragraph>
-            <Input onChange={handleGradePercent} value={gradePercent}/>
+            <ID>ID:{props.id}</ID>
+            <InputContainer>
+                <Paragraph>Work <br/> grade</Paragraph>
+                <Input onChange={handleGradePercent} value={gradePercent}/>
+            </InputContainer>
 
-            <Paragraph>Percent of grade</Paragraph>
-            <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
-            <Paragraph>Total: {paperTotal}%</Paragraph>
+            <InputContainer>
+                <Paragraph>Percent <br/> of grade</Paragraph>
+                <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
+            </InputContainer>
+
+            <Total>Total: {paperTotal}%</Total>
+
         </Container>
     )
 }
