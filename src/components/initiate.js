@@ -3,20 +3,35 @@ import React, {useState} from "react"
 
 //Component imports
 import Course from "./course"
-import {Header, Paragraph, Button} from "../components/styles"
+
+const Header = styled.h1`
+
+`
 
 const Container = styled.div`
     display:grid;
-    grid-template-columns:repeat(2, 1fr);    
+    grid-template-columns:repeat(1, 1fr);    
 `
 
 const GUI = styled.div`
+    display:flexbox;
+    /* grid-template-columns:repeat(2, 1fr);     */
 
+`
+
+const CourseContainer = styled.div`
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);   
 `
 
 const ButtonContainer = styled.div`
     display:grid;
     grid-template-columns:1fr;
+`
+
+const Button = styled.button`
+    width:50%;
+    margin:auto;
 `
 
 const Initiate = () =>{
@@ -60,17 +75,20 @@ const Initiate = () =>{
         <Container>
             <GUI>
                 <Header>Number of classes to calculate: {numCourses}</Header>
-                <Header>Year total:{yearTotal}</Header>
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
                     <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
                 </ButtonContainer>
+                
+                <Header>Year total:{yearTotal}</Header>
+
+                
             </GUI>
 
-            <Container>
+            <CourseContainer>
                 {courseComponentList}
-            </Container>
+            </CourseContainer>
         </Container>
     )
     

@@ -3,11 +3,24 @@ import styled from "styled-components";
 
 //Component imports
 import Initiate from "./components/initiate"
-import {Header, Paragraph} from "./components/styles"
 
 const Container = styled.div`
   background-color:#f8f8ff;
   display:grid;
+`
+
+const Header = styled.h1`
+  height:100%;
+  margin-top:0;
+  margin-bottom:0;
+
+`
+
+const Paragraph = styled.p`
+  vertical-align:bottom;
+  
+  margin-top:auto;
+  margin-bottom:0;
 `
 
 const InitiateContainer = styled.div`
@@ -15,7 +28,9 @@ const InitiateContainer = styled.div`
 `
 
 const InfoContainer = styled.div`
-
+  display:grid;
+  grid-template-columns:repeat(1,1FR);
+  /* height:3rem; */
 `
 
 function App() {
