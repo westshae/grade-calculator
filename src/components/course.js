@@ -5,8 +5,14 @@ import React, { useState} from "react"
 import Paper from "./paper"
 
 const Container = styled.div`
-    display:flexbox;
-    flex-direction:column;
+    background-color:yellow;
+`
+
+const GUI = styled.div`
+    display:grid;
+    grid-template-columns:3fr 1fr 1fr;
+    grid-template-rows:1fr;
+    background-color:lightblue;
 `
 
 const ButtonContainer = styled.div`
@@ -18,14 +24,43 @@ const Button = styled.button`
 
 `
 
+const Header = styled.h1`
+    height:100%;
+    margin-top:0;
+    margin-bottom:0;
+`
+
+const Num = styled.h1`
+    text-align:center;    
+    margin-top:auto;
+    margin-bottom:auto;
+    font-size:2rem;
+`
+
+const Paragraph = styled.p`
+    text-align:center;    
+    font-size:1.5rem;
+    margin-left:auto;
+    margin-right:auto;
+
+    margin-top:auto;
+    margin-bottom:0;
+`
+
+const TextContainer = styled.div`
+    display:grid;
+    grid-template-columns:repeat(1,1FR);
+`
+
 const PaperContainer = styled.div`
     display:grid;
     grid-template-rows:1fr;
     grid-row-gap:1rem;
 `
 
-const Label = styled.label`
-    display:flexbox;
+const Total = styled(Header)`
+    font-size:2rem;
+    
 `
 
 
@@ -74,15 +109,19 @@ const Course = (props) =>{
     }
 
     return(
-        <div>
-            <Container>
-                <Label>Number of assignments/tests (Anything you're marked for)</Label>
-                <p>{numPapers}</p>
+        <Container>
+            <GUI>
+                <TextContainer>
+                    <Header>Number of assignments/tests</Header>
+                    <Paragraph> (Anything you're marked for)</Paragraph>
+                </TextContainer>
+                <Num>{numPapers}</Num>
+
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
                     <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
                 </ButtonContainer>
-            </Container>
+            </GUI>
 
             <br/>
 
@@ -90,8 +129,8 @@ const Course = (props) =>{
                 {paperComponentList}
             </PaperContainer>
 
-            <p>Course Total: {courseTotal}</p>
-        </div>
+            <Total>Course Total: {courseTotal}</Total>
+        </Container>
     )
 }
 
