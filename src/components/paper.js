@@ -17,6 +17,8 @@ const Paragraph = styled.p`
     padding-top:5%;
     padding-bottom:5%;
     font-size:1.5rem;
+    margin-left:auto;
+    margin-right:auto;
 
 `
 
