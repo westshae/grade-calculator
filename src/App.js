@@ -14,9 +14,10 @@ const Container = styled.div`
 `
 
 const Header = styled.h1`
-  height:100%;
   margin-top:0;
-  margin-bottom:0;
+    margin-bottom:0;
+    color:#f6f1f4;
+    margin-left:0.1rem;
 
 `
 
@@ -26,26 +27,29 @@ const Paragraph = styled.p`
   margin-top:auto;
   margin-bottom:0.25rem;
   font-size:1.1rem;
-  margin-left:0.2rem;
+  margin-left:1rem;
+  color:#f6f1f4;
+
 `
 
 const InfoContainer = styled.div`
-  display:flexbox;
-  border-bottom:solid #222831;
+  display:grid;
+  grid-template-columns:1fr 4fr;
+  border-bottom:solid #1B6CA8 2px;
+
+  background-color:#222831;
   margin-bottom:1rem;
 `
 
 function App() {
   return (
-    <div>
-      <InfoContainer>
-          <Header>Grade calculator</Header>
-          <Paragraph>This website has been created to simplify the calculation of your grades, and predict what types of grades you need, and where you should focus your effort.</Paragraph>
-      </InfoContainer>
       <Container>
+        <InfoContainer>
+            <Header>Grade calculator</Header>
+            <Paragraph>This website has been created to simplify the calculation of your grades, and predict what types of grades you need, and where you should focus your effort.</Paragraph>
+        </InfoContainer>
         <Initiate/>
       </Container>
-    </div>
   );
 }
 

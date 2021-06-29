@@ -57,7 +57,7 @@ const InputContainer = styled.div`
 
 const HR = styled.hr`
     color:#1B6CA8;
-    height:0.125rem;
+    height:3px;
     border:none;
     background-color:#1B6CA8;
 `

@@ -5,9 +5,10 @@ import React, {useState} from "react"
 import Course from "./course"
 
 const Header = styled.h1`
-    height:100%;
     margin-top:0;
     margin-bottom:0;
+    color:#f6f1f4;
+    margin-left:0.1rem;
 `
 
 const Container = styled.div`
@@ -17,10 +18,15 @@ const Container = styled.div`
 
 const GUI = styled.div`
     display:grid;
-    text-align:center;
-    grid-template-columns:2fr 1fr 1fr;
-    grid-template-rows:1fr;
-    width:50%;
+    grid-template-columns:3fr 1fr;
+    background-color:#222831;
+
+    /* margin:0.75rem; */
+
+    border-bottom:solid 2px;
+    border-color:#1B6CA8;
+
+    margin-bottom:2rem;
 
 `
 
@@ -28,19 +34,34 @@ const CourseContainer = styled.div`
     display:grid;
     grid-template-columns:repeat(2, 1fr);   
     grid-column-gap:1rem;
-    grid-row-gap:1rem;
+    grid-row-gap:3rem;
 
 `
 
 const ButtonContainer = styled.div`
+    margin:0.5rem;
     display:grid;
     grid-template-columns:repeat(2,1fr);
+    grid-column-gap:0.35rem;
+    
 `
 
 const Button = styled.button`
-    /* width:80%;
-    height:100%;
-    margin:auto; */
+    background-color:#393E46;
+    border:none;
+    color:#f6f1f4;
+    border-radius:0.4rem;
+`
+
+const Total = styled(Header)`
+    font-size:2rem;
+    background-color:#222831;
+    margin:0;
+
+    border-bottom:solid 2px;
+    border-color:#1B6CA8;
+    margin-top:2rem;
+    
 `
 
 const Initiate = () =>{
@@ -83,21 +104,26 @@ const Initiate = () =>{
     return(
         <Container>
             <GUI>
-                <Header>Number of classes <br/> to calculate: {numCourses}</Header>
+                <Header>Number of classes to calculate: {numCourses}</Header>
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
                     <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
                 </ButtonContainer>
                 
-                <Header>Year total: {yearTotal}</Header>
 
                 
             </GUI>
 
+            
+
             <CourseContainer>
                 {courseComponentList}
             </CourseContainer>
+
+            <Total>Year total: {yearTotal}%</Total>
+            <p/>
+
         </Container>
     )
     

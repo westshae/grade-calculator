@@ -54,17 +54,8 @@ const PaperContainer = styled.div`
 
 const Total = styled(Header)`
     font-size:2rem;
-    /* background-color:#393E46; */
     background-color:#222831;
-
-    /* margin:0.75rem; */
-    /* margin-bottom:0; */
-    /* margin-top:0.75rem; */
     margin:0;
-
-    /* border-left:none;
-    border-bottom:solid 2px;
-    border-color:#32E0C4; */
     
 `
 
@@ -131,7 +122,7 @@ const Course = (props) =>{
                 {paperComponentList}
             </PaperContainer>
 
-            <Total>Course Total: {courseTotal}</Total>
+            <Total>Course Total: {courseTotal}%</Total>
         </Container>
     )
 }
