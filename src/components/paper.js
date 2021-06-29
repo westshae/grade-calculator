@@ -6,13 +6,13 @@ const Container = styled.div`
     display:grid;
     grid-template-columns:repeat(4,1fr);
     grid-template-rows:1fr;
-    background-color:#393E46;
+    background-color:#222831;
 
-    margin-left:0.75rem;
-    margin-right:0.75rem;
+    /* margin-left:0.75rem;
+    margin-right:0.75rem; */
 
-    border-bottom:solid 2px;
-    border-color:#32E0C4;
+    /* border-bottom:solid 2px;
+    border-color:#32E0C4; */
 `
 
 const Paragraph = styled.p`
@@ -36,7 +36,7 @@ const Total = styled(Paragraph)`
 `
 
 const Input = styled.input`
-    background-color:#7D7B86;
+    background-color:#393E46;
     border:none;
     height:100%;
     padding-top:0;
@@ -53,6 +53,13 @@ const Input = styled.input`
 const InputContainer = styled.div`
     display:flexbox;
     vertical-align:middle;
+`
+
+const HR = styled.hr`
+    color:#1B6CA8;
+    height:0.125rem;
+    border:none;
+    background-color:#1B6CA8;
 `
 
 const Paper = (props) =>{
@@ -101,21 +108,24 @@ const Paper = (props) =>{
     }, [paperTotal])
 
     return(
-         <Container>
-            <ID>ID:{props.id}</ID>
-            <InputContainer>
-                <Paragraph>Work <br/> grade</Paragraph>
-                <Input onChange={handleGradePercent} value={gradePercent}/>
-            </InputContainer>
+        <div>
+            <Container>
+                <ID>ID:{props.id}</ID>
+                <InputContainer>
+                    <Paragraph>Work <br/> grade</Paragraph>
+                    <Input onChange={handleGradePercent} value={gradePercent}/>
+                </InputContainer>
 
-            <InputContainer>
-                <Paragraph>Percent <br/> of grade</Paragraph>
-                <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
-            </InputContainer>
+                <InputContainer>
+                    <Paragraph>Percent <br/> of grade</Paragraph>
+                    <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
+                </InputContainer>
 
-            <Total>Total: {paperTotal}%</Total>
+                <Total>Total: {paperTotal}%</Total>
 
-        </Container>
+            </Container>
+            <HR/>
+        </div>
     )
 }
 

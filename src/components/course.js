@@ -5,7 +5,7 @@ import React, { useState} from "react"
 import Paper from "./paper"
 
 const Container = styled.div`
-    background-color:#222831;
+    /* background-color:#222831; */
     border-radius:0.25rem;
     height:100%;
     
@@ -16,12 +16,12 @@ const GUI = styled.div`
 
     display:grid;
     grid-template-columns:3fr 1fr;
-    background-color:#393E46;
+    background-color:#222831;
 
-    margin:0.75rem;
+    /* margin:0.75rem; */
 
     border-bottom:solid 2px;
-    border-color:#32E0C4;
+    border-color:#1B6CA8;
 `
 
 const ButtonContainer = styled.div`
@@ -49,18 +49,22 @@ const Header = styled.h1`
 const PaperContainer = styled.div`
     display:grid;
     grid-template-rows:1fr;
-    grid-row-gap:1rem;
+    /* grid-row-gap:1rem; */
 `
 
 const Total = styled(Header)`
     font-size:2rem;
-    background-color:#393E46;
+    /* background-color:#393E46; */
+    background-color:#222831;
 
-    margin:0.75rem;
+    /* margin:0.75rem; */
     /* margin-bottom:0; */
+    /* margin-top:0.75rem; */
+    margin:0;
 
+    /* border-left:none;
     border-bottom:solid 2px;
-    border-color:#32E0C4;
+    border-color:#32E0C4; */
     
 `
 
