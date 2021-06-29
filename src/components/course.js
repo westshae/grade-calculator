@@ -5,53 +5,47 @@ import React, { useState} from "react"
 import Paper from "./paper"
 
 const Container = styled.div`
-    background-color:yellow;
+    background-color:#222831;
+    border-radius:0.25rem;
+    height:100%;
+    
+
 `
 
 const GUI = styled.div`
+
     display:grid;
-    grid-template-columns:3fr 1fr 1fr;
-    grid-template-rows:1fr;
-    background-color:lightblue;
+    grid-template-columns:3fr 1fr;
+    background-color:#393E46;
+
+    margin:0.75rem;
+
+    border-bottom:solid 2px;
+    border-color:#32E0C4;
 `
 
 const ButtonContainer = styled.div`
+    margin:0.5rem;
     display:grid;
     grid-template-columns:repeat(2,1fr);
+    grid-column-gap:0.35rem;
 `
 
 const Button = styled.button`
+    background-color:#393E46;
+    border:none;
+    color:#f6f1f4;
+    border-radius:0.4rem;
 
 `
 
 const Header = styled.h1`
-    height:100%;
     margin-top:0;
     margin-bottom:0;
+    color:#f6f1f4;
+    margin-left:0.1rem;
+
 `
-
-const Num = styled.h1`
-    text-align:center;    
-    margin-top:auto;
-    margin-bottom:auto;
-    font-size:2rem;
-`
-
-const Paragraph = styled.p`
-    text-align:center;    
-    font-size:1.5rem;
-    margin-left:auto;
-    margin-right:auto;
-
-    margin-top:auto;
-    margin-bottom:0;
-`
-
-const TextContainer = styled.div`
-    display:grid;
-    grid-template-columns:repeat(1,1FR);
-`
-
 const PaperContainer = styled.div`
     display:grid;
     grid-template-rows:1fr;
@@ -60,6 +54,13 @@ const PaperContainer = styled.div`
 
 const Total = styled(Header)`
     font-size:2rem;
+    background-color:#393E46;
+
+    margin:0.75rem;
+    /* margin-bottom:0; */
+
+    border-bottom:solid 2px;
+    border-color:#32E0C4;
     
 `
 
@@ -111,11 +112,8 @@ const Course = (props) =>{
     return(
         <Container>
             <GUI>
-                <TextContainer>
-                    <Header>Number of assignments/tests</Header>
-                    <Paragraph> (Anything you're marked for)</Paragraph>
-                </TextContainer>
-                <Num>{numPapers}</Num>
+                <Header>Number of assignments/tests: {numPapers}</Header>
+                {/* <Num>{numPapers}</Num> */}
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>

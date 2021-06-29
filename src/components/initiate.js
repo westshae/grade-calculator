@@ -12,9 +12,7 @@ const Header = styled.h1`
 
 const Container = styled.div`
     display:grid;
-    grid-template-columns:repeat(1, 1fr);   
-    background-color:lavender;
-    
+    grid-template-columns:repeat(1, 1fr);       
 `
 
 const GUI = styled.div`
@@ -22,7 +20,6 @@ const GUI = styled.div`
     text-align:center;
     grid-template-columns:2fr 1fr 1fr;
     grid-template-rows:1fr;
-    background-color:lightcoral;
     width:50%;
 
 `

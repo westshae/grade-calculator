@@ -6,11 +6,17 @@ const Container = styled.div`
     display:grid;
     grid-template-columns:repeat(4,1fr);
     grid-template-rows:1fr;
-    background-color:pink;
-    
+    background-color:#393E46;
+
+    margin-left:0.75rem;
+    margin-right:0.75rem;
+
+    border-bottom:solid 2px;
+    border-color:#32E0C4;
 `
 
 const Paragraph = styled.p`
+    color:#F6F7F9;
     margin-top:auto;
     margin-bottom:auto;
     text-align:center;    
@@ -30,7 +36,7 @@ const Total = styled(Paragraph)`
 `
 
 const Input = styled.input`
-    background-color:lime;
+    background-color:#7D7B86;
     border:none;
     height:100%;
     padding-top:0;
