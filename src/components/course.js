@@ -56,7 +56,6 @@ const Button = styled.button`
     background-color:#393E46;
     border:none;
     color:#f6f1f4;
-    height:2rem;
     border-radius:0.4rem;
 
     @media only screen 
@@ -64,6 +63,8 @@ const Button = styled.button`
     and (orientation: portrait) {
         grid-template-columns: repeat(1, 1fr);
         grid-column-gap:0.35rem;
+        height:2rem;
+
     }
 `
 
