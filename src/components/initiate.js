@@ -131,7 +131,7 @@ const Initiate = () =>{
         //Replaces the value at the index with the new course total
         let totalList = courseTotalList;
         totalList.splice(index, 1, courseTotal)
-        setYearTotal(totalList.reduce((sum, add)=> sum + add, 0));
+        setYearTotal((totalList.reduce((sum, add)=> sum + add, 0)/numCourses));
     }
 
     return(
