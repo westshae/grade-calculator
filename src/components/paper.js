@@ -153,7 +153,7 @@ const Paper = (props) =>{
                     <Input onChange={handlePercentOfGrade} value={percentOfGrade}/>
                 </InputContainer>
 
-                <Total>Total: {paperTotal.toFixed(2)}%</Total>
+                <Total>Total: {parseFloat(paperTotal).toFixed(2)}%</Total>
 
             </Container>
             <HR/>

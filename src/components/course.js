@@ -155,7 +155,7 @@ const Course = (props) =>{
                 {paperComponentList}
             </PaperContainer>
 
-            <Total>Course Total: {courseTotal.toFixed(2)}%</Total>
+            <Total>Course Total: {parseFloat(courseTotal).toFixed(2)}%</Total>
         </Container>
     )
 }

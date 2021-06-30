@@ -131,9 +131,6 @@ const Initiate = () =>{
         //Replaces the value at the index with the new course total
         let totalList = courseTotalList;
         totalList.splice(index, 1, courseTotal)
-
-        //Sets the courseTotalList state, as well as updates the year total value
-        setCourseTotalList(totalList);
         setYearTotal(totalList.reduce((sum, add)=> sum + add, 0));
     }
 
@@ -157,7 +154,7 @@ const Initiate = () =>{
                 {courseComponentList}
             </CourseContainer>
 
-            <Total>Year total: {yearTotal.toFixed(2)}%</Total>
+            <Total>Year total: {parseFloat(yearTotal).toFixed(2)}%</Total>
             <p/>
 
         </Container>
