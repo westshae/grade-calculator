@@ -68,6 +68,7 @@ const Input = styled.input`
         height:4rem;
         text-align:none;
         vertical-align:baseline;
+        width:80%;
     }
 `
 
@@ -78,6 +79,8 @@ const InputContainer = styled.div`
     @media only screen 
     and (max-device-width: 480px)
     and (orientation: portrait) {
+        display:grid;
+        grid-template-columns:1fr 2fr;
         align-items: center;
         justify-items: center;
     }
