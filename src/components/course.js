@@ -105,7 +105,7 @@ const Course = (props) =>{
         const componentList = paperComponentList;
 
         //true == increase
-        if(change === true && numPapers < 15){
+        if(change === true && numPapers < 30){
             //Increases the numCourses value and adds a course to the componentList to be rendered
             setNumPapers(numPapers + 1);
             componentList.push(<Paper key={count} index={count} callback = {updatePaperTotals} id={numPapers}/>);
@@ -141,7 +141,6 @@ const Course = (props) =>{
         <Container>
             <GUI>
                 <Header>Number of assignments/tests: {numPapers}</Header>
-                {/* <Num>{numPapers}</Num> */}
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
