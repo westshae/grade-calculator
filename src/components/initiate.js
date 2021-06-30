@@ -69,6 +69,7 @@ const ButtonContainer = styled.div`
     and (max-device-width: 480px)
     and (orientation: portrait) {
         grid-template-columns: repeat(1, 1fr);
+        grid-row-gap:0.35rem;
     }
     
 `
@@ -77,7 +78,15 @@ const Button = styled.button`
     background-color:#393E46;
     border:none;
     color:#f6f1f4;
+    height:2rem;
     border-radius:0.4rem;
+    
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap:0.35rem;
+    }
 `
 
 const Total = styled(Header)`

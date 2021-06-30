@@ -46,6 +46,8 @@ const ButtonContainer = styled.div`
     @media only screen 
     and (max-device-width: 480px)
     and (orientation: portrait) {
+        grid-row-gap:0.35rem;
+
         grid-template-columns: repeat(1, 1fr);
     }
 `
@@ -54,8 +56,15 @@ const Button = styled.button`
     background-color:#393E46;
     border:none;
     color:#f6f1f4;
+    height:2rem;
     border-radius:0.4rem;
 
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-column-gap:0.35rem;
+    }
 `
 
 const Header = styled.h1`
@@ -67,8 +76,12 @@ const Header = styled.h1`
 `
 const PaperContainer = styled.div`
     display:grid;
-    grid-template-rows:1fr;
-    /* grid-row-gap:1rem; */
+    grid-template-rows:repeat(1, 1fr);
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        /* grid-template-rows: repeat(1, 1fr); */
+    }
 `
 
 const Total = styled(Header)`

@@ -13,12 +13,6 @@ const Container = styled.div`
     and (orientation: portrait) {
         grid-template-columns: repeat(1, 1fr);
     }
-
-    /* margin-left:0.75rem;
-    margin-right:0.75rem; */
-
-    /* border-bottom:solid 2px;
-    border-color:#32E0C4; */
 `
 
 const Paragraph = styled.p`
@@ -32,17 +26,32 @@ const Paragraph = styled.p`
     margin-left:auto;
     margin-right:auto;
 
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        text-align:left;
+        margin-left:1rem;
+    }
+
 `
 
 const ID = styled(Paragraph)`
     font-size:1.5rem;
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        /* width:100%; */
+        margin-left:1rem;
+    }
 `
 const Total = styled(Paragraph)`
     font-size:1.5rem;
-    width:100%;
+    /* width:100%; */
 `
 
 const Input = styled.input`
+    color:#F6F7F9;
+
     background-color:#393E46;
     border:none;
     height:100%;
@@ -54,8 +63,17 @@ const Input = styled.input`
     text-align:center;
     font-size:2rem;
 
-    /* font-size:; */
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        margin-top:auto;
+        margin-bottom:auto;
+        height:4rem;
+        text-align:none;
+        vertical-align:baseline;
+    }
 `
+
 
 const InputContainer = styled.div`
     display:flexbox;
