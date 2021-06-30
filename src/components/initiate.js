@@ -9,11 +9,21 @@ const Header = styled.h1`
     margin-bottom:0;
     color:#f6f1f4;
     margin-left:0.1rem;
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const Container = styled.div`
     display:grid;
-    grid-template-columns:repeat(1, 1fr);       
+    grid-template-columns:repeat(1, 1fr);    
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }   
 `
 
 const GUI = styled.div`
@@ -28,6 +38,11 @@ const GUI = styled.div`
 
     margin-bottom:2rem;
 
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const CourseContainer = styled.div`
@@ -36,6 +51,12 @@ const CourseContainer = styled.div`
     grid-column-gap:1rem;
     grid-row-gap:3rem;
 
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 `
 
 const ButtonContainer = styled.div`
@@ -43,6 +64,12 @@ const ButtonContainer = styled.div`
     display:grid;
     grid-template-columns:repeat(2,1fr);
     grid-column-gap:0.35rem;
+
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
     
 `
 

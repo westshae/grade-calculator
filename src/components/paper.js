@@ -8,6 +8,12 @@ const Container = styled.div`
     grid-template-rows:1fr;
     background-color:#222831;
 
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
     /* margin-left:0.75rem;
     margin-right:0.75rem; */
 
@@ -33,6 +39,7 @@ const ID = styled(Paragraph)`
 `
 const Total = styled(Paragraph)`
     font-size:1.5rem;
+    width:100%;
 `
 
 const Input = styled.input`
@@ -105,7 +112,7 @@ const Paper = (props) =>{
     //Seperate from above useEffect for syncing data
     useEffect(()=>{
         props.callback(props.index, paperTotal);
-    }, [paperTotal])
+    }, [paperTotal, props])
 
     return(
         <div>

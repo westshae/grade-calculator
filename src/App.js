@@ -11,6 +11,14 @@ const Container = styled.div`
   width:80%;
   margin-left:auto;
   margin-right:auto;
+  @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+      overflow-x:auto;
+      width:100%;
+      margin-left:0;
+      margin-right:0;
+    }
 `
 
 const Header = styled.h1`
@@ -39,6 +47,12 @@ const InfoContainer = styled.div`
 
   background-color:#222831;
   margin-bottom:1rem;
+
+  @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 function App() {

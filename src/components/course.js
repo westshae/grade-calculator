@@ -8,6 +8,13 @@ const Container = styled.div`
     /* background-color:#222831; */
     border-radius:0.25rem;
     height:100%;
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        /* min-width:0;
+        min-height:0; */
+        /* overflow:hidden; */
+    }
     
 
 `
@@ -22,6 +29,12 @@ const GUI = styled.div`
 
     border-bottom:solid 2px;
     border-color:#1B6CA8;
+
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const ButtonContainer = styled.div`
@@ -29,6 +42,12 @@ const ButtonContainer = styled.div`
     display:grid;
     grid-template-columns:repeat(2,1fr);
     grid-column-gap:0.35rem;
+
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `
 
 const Button = styled.button`
