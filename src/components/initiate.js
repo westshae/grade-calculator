@@ -157,7 +157,7 @@ const Initiate = () =>{
                 {courseComponentList}
             </CourseContainer>
 
-            <Total>Year total: {yearTotal}%</Total>
+            <Total>Year total: {yearTotal.toFixed(2)}%</Total>
             <p/>
 
         </Container>

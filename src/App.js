@@ -25,7 +25,7 @@ const Header = styled.h1`
   margin-top:0;
     margin-bottom:0;
     color:#f6f1f4;
-    margin-left:0.1rem;
+    margin-left:1rem;
 
 `
 
@@ -60,7 +60,7 @@ function App() {
       <Container>
         <InfoContainer>
             <Header>Grade calculator</Header>
-            <Paragraph>This website has been created to simplify the calculation of your grades, and predict what types of grades you need, and where you should focus your effort.</Paragraph>
+            <Paragraph>Calculate your grades with ease. Simply add your work and get your results.</Paragraph>
         </InfoContainer>
         <Initiate/>
       </Container>
