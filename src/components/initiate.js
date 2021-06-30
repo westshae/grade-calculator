@@ -62,7 +62,7 @@ const CourseContainer = styled.div`
 const ButtonContainer = styled.div`
     margin:0.5rem;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(1,1fr);
     grid-column-gap:0.35rem;
 
     @media only screen 
@@ -131,7 +131,7 @@ const Initiate = () =>{
         //Replaces the value at the index with the new course total
         let totalList = courseTotalList;
         totalList.splice(index, 1, courseTotal)
-        setYearTotal((totalList.reduce((sum, add)=> sum + add, 0)/numCourses));
+        setYearTotal((totalList.reduce((sum, add)=> sum + add, 0)));
     }
 
     return(
@@ -141,7 +141,6 @@ const Initiate = () =>{
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
-                    <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
                 </ButtonContainer>
                 
 
@@ -154,7 +153,7 @@ const Initiate = () =>{
                 {courseComponentList}
             </CourseContainer>
 
-            <Total>Year total: {parseFloat(yearTotal).toFixed(2)}%</Total>
+            <Total>Year total: {parseFloat(yearTotal/numCourses).toFixed(2)}%</Total>
             <p/>
 
         </Container>

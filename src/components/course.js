@@ -40,7 +40,7 @@ const GUI = styled.div`
 const ButtonContainer = styled.div`
     margin:0.5rem;
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(1,1fr);
     grid-column-gap:0.35rem;
 
     @media only screen 
@@ -145,7 +145,6 @@ const Course = (props) =>{
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
-                    <Button onClick={()=>handleButton(false)}>Decrease courses</Button>
                 </ButtonContainer>
             </GUI>
 
