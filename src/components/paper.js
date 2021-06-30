@@ -69,6 +69,7 @@ const Input = styled.input`
         text-align:none;
         vertical-align:baseline;
         width:80%;
+        border-left: 2px solid #1B6CA8;
     }
 `
 
