@@ -40,13 +40,10 @@ const ID = styled(Paragraph)`
     @media only screen 
     and (max-device-width: 480px)
     and (orientation: portrait) {
-        /* width:100%; */
-        margin-left:1rem;
     }
 `
 const Total = styled(Paragraph)`
     font-size:1.5rem;
-    /* width:100%; */
 `
 
 const Input = styled.input`
@@ -78,6 +75,12 @@ const Input = styled.input`
 const InputContainer = styled.div`
     display:flexbox;
     vertical-align:middle;
+    @media only screen 
+    and (max-device-width: 480px)
+    and (orientation: portrait) {
+        align-items: center;
+        justify-items: center;
+    }
 `
 
 const HR = styled.hr`
