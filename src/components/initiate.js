@@ -137,14 +137,11 @@ const Initiate = () =>{
     return(
         <Container>
             <GUI>
-                <Header>Number of classes to calculate: {numCourses}</Header>
+                <Header>Number of courses to calculate: {numCourses}</Header>
 
                 <ButtonContainer>
                     <Button onClick={()=>handleButton(true)}>Increase courses</Button>
                 </ButtonContainer>
-                
-
-                
             </GUI>
 
             

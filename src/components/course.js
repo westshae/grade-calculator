@@ -140,10 +140,10 @@ const Course = (props) =>{
     return(
         <Container>
             <GUI>
-                <Header>Number of assignments/tests: {numPapers}</Header>
+                <Header>Number of papers: {numPapers}</Header>
 
                 <ButtonContainer>
-                    <Button onClick={()=>handleButton(true)}>Increase courses</Button>
+                    <Button onClick={()=>handleButton(true)}>Increase papers</Button>
                 </ButtonContainer>
             </GUI>
 
