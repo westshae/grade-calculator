@@ -102,7 +102,7 @@ const Total = styled(Header)`
 
 const Initiate = () =>{
     const [numCourses, setNumCourses] = useState(0);
-    const [courseTotalList, setCourseTotalList] = useState(Array(0).fill());
+    const [courseTotalList] = useState(Array(0).fill());
     const [courseComponentList, setCourseComponentList] = useState(Array(0).fill())
     const [yearTotal, setYearTotal] = useState();
 
