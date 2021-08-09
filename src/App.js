@@ -51,8 +51,8 @@ const InfoContainer = styled.div`
   @media only screen 
     and (max-device-width: 480px)
     and (orientation: portrait) {
-        grid-template-columns: repeat(1, 1fr);
-    }
+      grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 function App() {
