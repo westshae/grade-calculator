@@ -55,7 +55,7 @@ const InfoContainer = styled.div`
   }
 `
 
-function App() {
+const App = () => {
   return (
       <Container>
         <InfoContainer>
